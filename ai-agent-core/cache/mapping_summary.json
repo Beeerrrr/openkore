@@ -1,0 +1,660 @@
+{
+  "ED": {
+    "file": "ED.pa.yaml",
+    "component_count": 129,
+    "forms": [
+      "ED_FORM"
+    ],
+    "galleries": [
+      "FG_Additional_1"
+    ],
+    "variables": [
+      "varAC",
+      "varAdtn",
+      "varCaseID",
+      "varCaseStatus",
+      "varCaseType",
+      "varCheckCase",
+      "varCurrentCase",
+      "varIT",
+      "varPD",
+      "varPermission",
+      "varPurchase",
+      "varQA",
+      "varQAR1",
+      "varQAR2",
+      "varSubmittedCase",
+      "varTargetStatus",
+      "varURL",
+      "varWHFG",
+      "varWHRM"
+    ],
+    "navigates_to": [
+      "Portal"
+    ],
+    "data_sources": [
+      "AdtnItems",
+      "Choice",
+      "EDAdtnItems",
+      "EDData",
+      "FirstN(EDAdtnItems",
+      "Main",
+      "MatMasterQA",
+      "Sequence(CountRows(EDAdtnItems"
+    ],
+    "collections": [
+      "AdtnItems",
+      "EDAdtnItems"
+    ],
+    "on_visible": "=UpdateContext({varAdtn: false});"
+  },
+  "FG": {
+    "file": "FG.pa.yaml",
+    "component_count": 210,
+    "forms": [
+      "FG_FORM"
+    ],
+    "galleries": [
+      "FG_Additional"
+    ],
+    "variables": [
+      "varAC",
+      "varAdtn",
+      "varCID",
+      "varCaseID",
+      "varCaseType",
+      "varCheckCase",
+      "varCurrentCase",
+      "varIT",
+      "varPD",
+      "varPurchase",
+      "varQA",
+      "varQAR1",
+      "varQAR2",
+      "varSubmittedCase",
+      "varTargetStatus",
+      "varURL",
+      "varWHFG",
+      "varWHRM",
+      "variables"
+    ],
+    "navigates_to": [
+      "Portal"
+    ],
+    "data_sources": [
+      "AdtnItems",
+      "Choice",
+      "Filter(",
+      "FirstN(AdtnItems",
+      "MRData",
+      "Main",
+      "Sequence(CountRows(AdtnItems"
+    ],
+    "collections": [
+      "AdtnItems"
+    ],
+    "on_visible": "=UpdateContext({varAdtn: false});"
+  },
+  "MatsReq-Print": {
+    "file": "MatsReq-Print.pa.yaml",
+    "component_count": 177,
+    "forms": [],
+    "galleries": [
+      "Gal_Item+",
+      "Qait_Attachments_1"
+    ],
+    "variables": [
+      "varAnyOnPrint",
+      "varAnyOnPrintID"
+    ],
+    "navigates_to": [
+      "QaitReview"
+    ],
+    "data_sources": [
+      "MRData",
+      "Main"
+    ],
+    "collections": [],
+    "on_visible": "=Set(varAnyOnPrint,LookUp(Main,ID = Value(PRINT_REF_ID.Text)))"
+  },
+  "PkMReviewED": {
+    "file": "PkMReviewED.pa.yaml",
+    "component_count": 10,
+    "forms": [
+      "PK_PkM_FORM_1"
+    ],
+    "galleries": [],
+    "variables": [
+      "varAC",
+      "varCaseID",
+      "varCaseReviewID",
+      "varCaseType",
+      "varCurrentCaseJa",
+      "varIT",
+      "varPD",
+      "varPermission",
+      "varPurchase",
+      "varQA",
+      "varQAR1",
+      "varQAR2",
+      "varURL",
+      "varWHFG",
+      "varWHRM"
+    ],
+    "navigates_to": [
+      "Portal"
+    ],
+    "data_sources": [
+      "Main"
+    ],
+    "collections": [],
+    "on_visible": null
+  },
+  "Portal": {
+    "file": "Portal.pa.yaml",
+    "component_count": 40,
+    "forms": [],
+    "galleries": [],
+    "variables": [
+      "varCID",
+      "varCaseID",
+      "varCaseReview",
+      "varCaseReviewID",
+      "varCaseStatus",
+      "varCaseType",
+      "varCheckCase",
+      "varCurrentCase",
+      "varMainRecord",
+      "varMainSubmitRecord",
+      "varRequestorEmail",
+      "varUpdateStatus",
+      "variables"
+    ],
+    "navigates_to": [
+      "ED",
+      "FG",
+      "Portal_Cases",
+      "RMPKNV",
+      "SG",
+      "TD"
+    ],
+    "data_sources": [
+      "AdtnItems",
+      "Choice",
+      "EDAdtnItems",
+      "Main",
+      "UserManagement"
+    ],
+    "collections": [
+      "AdtnItems",
+      "EDAdtnItems"
+    ],
+    "on_visible": "=Refresh(Main);\nSet(varCheckCase,Blank());"
+  },
+  "Portal_Cases": {
+    "file": "Portal_Cases.pa.yaml",
+    "component_count": 67,
+    "forms": [],
+    "galleries": [
+      "Portal_Cases_Gallery"
+    ],
+    "variables": [
+      "varCaseID",
+      "varCaseReviewID",
+      "varCaseStatus",
+      "varCaseType",
+      "varCheckCase",
+      "varCurrentCase",
+      "varPermission",
+      "varRequestorEmail",
+      "varUpdateStatus",
+      "varUserEmail",
+      "varUserInvolved",
+      "variables"
+    ],
+    "navigates_to": [
+      "ED",
+      "FG",
+      "Portal",
+      "QaitReview",
+      "RMPKNV",
+      "ReviewED",
+      "ReviewFGTD",
+      "ReviewPK",
+      "ReviewSG",
+      "SG",
+      "TD"
+    ],
+    "data_sources": [
+      "AdtnItems",
+      "Choice",
+      "EDAdtnItems",
+      "EDData",
+      "Filter(",
+      "Main",
+      "UserManagement",
+      "colUserPermissions",
+      "colUserPermissionsActive"
+    ],
+    "collections": [
+      "AdtnItems",
+      "EDAdtnItems",
+      "colUserPermissions",
+      "colUserPermissionsActive"
+    ],
+    "on_visible": null
+  },
+  "QaitFinal": {
+    "file": "QaitFinal.pa.yaml",
+    "component_count": 26,
+    "forms": [],
+    "galleries": [],
+    "variables": [
+      "varAC",
+      "varCaseID",
+      "varCaseReviewID",
+      "varCaseStatus",
+      "varCaseType",
+      "varCheckCase",
+      "varCurrentCase",
+      "varCurrentCaseJa",
+      "varIT",
+      "varPD",
+      "varPermission",
+      "varPurchase",
+      "varQA",
+      "varQAR1",
+      "varQAR2",
+      "varURL",
+      "varWHFG",
+      "varWHRM"
+    ],
+    "navigates_to": [
+      "Portal"
+    ],
+    "data_sources": [
+      "Main"
+    ],
+    "collections": [],
+    "on_visible": "=Reset(CB_IT_MatCode);\nReset(CB_IT_CMM);\nReset(CB_QAR_CMM);\nReset(CB_QAFR_CMM);\nReset(CB_APPROVE);\nReset(CB_SENDBACK);\nReset(CB_REJECT);"
+  },
+  "QaitReview": {
+    "file": "QaitReview.pa.yaml",
+    "component_count": 386,
+    "forms": [
+      "Qait_FORM"
+    ],
+    "galleries": [
+      "FGTD_Review_Gal_2",
+      "Qait_Attachments"
+    ],
+    "variables": [
+      "varAdtn",
+      "varAnyOnPrintID",
+      "varCaseReviewID",
+      "varCheckCase",
+      "varCurrentCase",
+      "varPermission"
+    ],
+    "navigates_to": [
+      "Portal",
+      "Portal_Cases",
+      "QaitFinal"
+    ],
+    "data_sources": [
+      "AdtnItems",
+      "Choice",
+      "MRData",
+      "Main"
+    ],
+    "collections": [
+      "AdtnItems"
+    ],
+    "on_visible": null
+  },
+  "ReviewED": {
+    "file": "ReviewED.pa.yaml",
+    "component_count": 58,
+    "forms": [
+      "ED_REVIEW_FORM"
+    ],
+    "galleries": [
+      "FGTD_Attachments_1",
+      "FG_Additional_6"
+    ],
+    "variables": [
+      "varAC",
+      "varAdtn",
+      "varCaseID",
+      "varCaseReviewID",
+      "varCaseStatus",
+      "varCaseType",
+      "varCheckCase",
+      "varCurrentCase",
+      "varCurrentCaseJa",
+      "varIT",
+      "varPD",
+      "varPermission",
+      "varPurchase",
+      "varQA",
+      "varQAR1",
+      "varQAR2",
+      "varURL",
+      "varWHFG",
+      "varWHRM"
+    ],
+    "navigates_to": [
+      "PkMReviewED",
+      "Portal",
+      "Portal_Cases"
+    ],
+    "data_sources": [
+      "AdtnItems",
+      "Choice",
+      "EDData",
+      "MRData",
+      "Main"
+    ],
+    "collections": [
+      "AdtnItems"
+    ],
+    "on_visible": "=ResetForm(ED_REVIEW_FORM);"
+  },
+  "ReviewFGTD": {
+    "file": "ReviewFGTD.pa.yaml",
+    "component_count": 375,
+    "forms": [
+      "FGTD_ACC_FORM",
+      "FGTD_QA_FORM",
+      "FGTD_REVIEW_FORM",
+      "FGTD_WHFG_FORM"
+    ],
+    "galleries": [
+      "FGTD_Attachments",
+      "FGTD_Review_Gal"
+    ],
+    "variables": [
+      "varAC",
+      "varCID",
+      "varCaseID",
+      "varCaseReviewID",
+      "varCaseType",
+      "varCheckCase",
+      "varCurrentCase",
+      "varCurrentCaseJa",
+      "varIT",
+      "varPD",
+      "varPermission",
+      "varPurchase",
+      "varQA",
+      "varQAR1",
+      "varQAR2",
+      "varURL",
+      "varWHFG",
+      "varWHRM"
+    ],
+    "navigates_to": [
+      "Portal",
+      "Portal_Cases"
+    ],
+    "data_sources": [
+      "AdtnItems",
+      "Choice",
+      "Filter(",
+      "MRData",
+      "Main",
+      "Main].InspectionSetup"
+    ],
+    "collections": [
+      "AdtnItems"
+    ],
+    "on_visible": "=ResetForm(FGTD_ACC_FORM);\nResetForm(FGTD_WHFG_FORM);\nResetForm(FGTD_QA_FORM);"
+  },
+  "ReviewPK": {
+    "file": "ReviewPK.pa.yaml",
+    "component_count": 417,
+    "forms": [
+      "PK_ACC_FORM",
+      "PK_PD_FORM",
+      "PK_PkM_FORM",
+      "PK_QA_FORM",
+      "PK_Review_FORM",
+      "PK_WHRM_FORM"
+    ],
+    "galleries": [
+      "FG_Additional_5",
+      "PKR_Additional",
+      "PK_Attachments"
+    ],
+    "variables": [
+      "varAC",
+      "varAdtn",
+      "varCID",
+      "varCaseID",
+      "varCaseReviewID",
+      "varCaseType",
+      "varCheckCase",
+      "varCurrentCase",
+      "varCurrentCaseJa",
+      "varIT",
+      "varPD",
+      "varPermission",
+      "varPurchase",
+      "varQA",
+      "varQAR1",
+      "varQAR2",
+      "varURL",
+      "varWHFG",
+      "varWHRM"
+    ],
+    "navigates_to": [
+      "Portal",
+      "Portal_Cases"
+    ],
+    "data_sources": [
+      "AdtnItems",
+      "Choice",
+      "Filter(",
+      "FirstN(AdtnItems",
+      "MRData",
+      "Main",
+      "Sequence(CountRows(AdtnItems"
+    ],
+    "collections": [
+      "AdtnItems"
+    ],
+    "on_visible": "=UpdateContext({varAdtn: false});\nResetForm(PK_PkM_FORM);\nResetForm(PK_WHRM_FORM);\nResetForm(PK_QA_FORM);\nResetForm(PK_PD_FORM);\nResetForm(PK_ACC_FORM);"
+  },
+  "ReviewSG": {
+    "file": "ReviewSG.pa.yaml",
+    "component_count": 254,
+    "forms": [
+      "SG_ACC_FORM",
+      "SG_QA_FORM",
+      "SG_REVIEW_FORM"
+    ],
+    "galleries": [
+      "FGTD_Review_Gal_1",
+      "SG_Attachments"
+    ],
+    "variables": [
+      "varAC",
+      "varAdtn",
+      "varCID",
+      "varCaseID",
+      "varCaseReviewID",
+      "varCaseType",
+      "varCheckCase",
+      "varCurrentCase",
+      "varCurrentCaseJa",
+      "varIT",
+      "varPD",
+      "varPermission",
+      "varPurchase",
+      "varQA",
+      "varQAR1",
+      "varQAR2",
+      "varURL",
+      "varWHFG",
+      "varWHRM"
+    ],
+    "navigates_to": [
+      "Portal",
+      "Portal_Cases"
+    ],
+    "data_sources": [
+      "AdtnItems",
+      "Choice",
+      "MRData",
+      "Main",
+      "Main].InspectionSetup"
+    ],
+    "collections": [
+      "AdtnItems"
+    ],
+    "on_visible": "=ResetForm(SG_ACC_FORM);\nResetForm(SG_QA_FORM);"
+  },
+  "RMPKNV": {
+    "file": "RMPKNV.pa.yaml",
+    "component_count": 193,
+    "forms": [
+      "PK_FORM"
+    ],
+    "galleries": [
+      "PK_Additional"
+    ],
+    "variables": [
+      "varAC",
+      "varAdtn",
+      "varCID",
+      "varCaseID",
+      "varCaseType",
+      "varCheckCase",
+      "varCurrentCase",
+      "varCurrentCaseJa",
+      "varIT",
+      "varPD",
+      "varPermission",
+      "varPurchase",
+      "varQA",
+      "varQAR1",
+      "varQAR2",
+      "varSubmittedCase",
+      "varTargetStatus",
+      "varURL",
+      "varWHFG",
+      "varWHRM",
+      "variables"
+    ],
+    "navigates_to": [
+      "Portal"
+    ],
+    "data_sources": [
+      "AdtnItems",
+      "Choice",
+      "Filter(",
+      "FirstN(AdtnItems",
+      "MRData",
+      "Main",
+      "Sequence(CountRows(AdtnItems"
+    ],
+    "collections": [
+      "AdtnItems"
+    ],
+    "on_visible": "=UpdateContext({varAdtn: false});"
+  },
+  "SG": {
+    "file": "SG.pa.yaml",
+    "component_count": 185,
+    "forms": [
+      "SG_FORM"
+    ],
+    "galleries": [
+      "FG_Additional_2"
+    ],
+    "variables": [
+      "varAC",
+      "varAdtn",
+      "varCID",
+      "varCaseID",
+      "varCaseType",
+      "varCheckCase",
+      "varCurrentCase",
+      "varIT",
+      "varPD",
+      "varPurchase",
+      "varQA",
+      "varQAR1",
+      "varQAR2",
+      "varSubmittedCase",
+      "varTargetStatus",
+      "varURL",
+      "varWHFG",
+      "varWHRM",
+      "variables"
+    ],
+    "navigates_to": [
+      "Portal"
+    ],
+    "data_sources": [
+      "AdtnItems",
+      "Choice",
+      "Filter(AdtnItems",
+      "FirstN(AdtnItems",
+      "MRData",
+      "Main",
+      "Sequence(CountRows(AdtnItems"
+    ],
+    "collections": [
+      "AdtnItems"
+    ],
+    "on_visible": "=UpdateContext({varAdtn: false});"
+  },
+  "TD": {
+    "file": "TD.pa.yaml",
+    "component_count": 185,
+    "forms": [
+      "TD_FORM"
+    ],
+    "galleries": [
+      "FG_Additional_3"
+    ],
+    "variables": [
+      "varAC",
+      "varAdtn",
+      "varCID",
+      "varCaseID",
+      "varCaseType",
+      "varCheckCase",
+      "varCurrentCase",
+      "varIT",
+      "varPD",
+      "varPurchase",
+      "varQA",
+      "varQAR1",
+      "varQAR2",
+      "varSubmittedCase",
+      "varTargetStatus",
+      "varURL",
+      "varWHFG",
+      "varWHRM",
+      "variables"
+    ],
+    "navigates_to": [
+      "Portal"
+    ],
+    "data_sources": [
+      "AdtnItems",
+      "Choice",
+      "Filter(",
+      "FirstN(",
+      "MRData",
+      "Main",
+      "Sequence(CountRows(AdtnItems"
+    ],
+    "collections": [
+      "AdtnItems"
+    ],
+    "on_visible": "=UpdateContext({varAdtn: false});"
+  }
+}

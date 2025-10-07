@@ -1,0 +1,39 @@
+{
+  "_meta": {
+    "version": "1.0.0",
+    "purpose": "Reusable solution patterns and templates",
+    "last_updated": "ISO_TIMESTAMP_PLACEHOLDER",
+    "total_patterns": 0,
+    "total_applications": 0
+  },
+  "_template": {
+    "pattern_id": {
+      "type": "bug_fix | feature | refactor | optimization | testing",
+      "description": "What this pattern solves",
+      "tech_stack": "Power Platform | React | Django | Generic | All",
+      "when_to_use": "Conditions for applying this pattern",
+      "template": "Code template or approach (can be multi-line string)",
+      "placeholders": {
+        "COMPONENT_NAME": "Description of what to replace",
+        "VARIABLE_NAME": "Description of variable placeholder"
+      },
+      "dependencies": [
+        "What this pattern requires to work"
+      ],
+      "success_metrics": "How to validate pattern worked",
+      "examples": [
+        "solution_id_001 (real usage reference)"
+      ],
+      "reuse_count": 0,
+      "success_rate": "0%",
+      "created": "ISO_TIMESTAMP",
+      "last_used": "ISO_TIMESTAMP",
+      "contexts": [
+        "Scenarios where pattern applies"
+      ],
+      "anti_patterns": [
+        "What NOT to do (common mistakes)"
+      ]
+    }
+  }
+}

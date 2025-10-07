@@ -1,0 +1,17 @@
+# AI-AGENT-CORE Git Attributes
+# Ensures correct line endings across platforms
+
+# Shell scripts always use LF (Unix)
+*.sh text eol=lf
+
+# Batch scripts always use CRLF (Windows)
+*.bat text eol=crlf
+
+# JSON files use LF
+*.json text eol=lf
+
+# Markdown files use LF
+*.md text eol=lf
+
+# Default behavior
+* text=auto

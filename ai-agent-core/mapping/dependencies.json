@@ -1,0 +1,1028 @@
+{
+  "_meta": {
+    "version": "1.0.0",
+    "purpose": "Component relationship graph - shows how things connect",
+    "last_updated": "2025-10-06T08:49:09Z",
+    "total_edges": 93,
+    "total_clusters": 3,
+    "tech_stack": "Power Apps Canvas"
+  },
+  "edges": [
+    {
+      "from": "App",
+      "to": "ED",
+      "type": "navigates",
+      "via": "App.OnStart Navigate(ED)",
+      "notes": "Deep-link routing based on initial CID/status.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "App",
+      "to": "FG",
+      "type": "navigates",
+      "via": "App.OnStart Navigate(FG)",
+      "notes": "Deep-link routing based on initial CID/status.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "App",
+      "to": "Portal",
+      "type": "navigates",
+      "via": "App.OnStart Navigate(Portal)",
+      "notes": "Deep-link routing based on initial CID/status.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "App",
+      "to": "QaitReview",
+      "type": "navigates",
+      "via": "App.OnStart Navigate(QaitReview)",
+      "notes": "Deep-link routing based on initial CID/status.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "App",
+      "to": "RMPKNV",
+      "type": "navigates",
+      "via": "App.OnStart Navigate(RMPKNV)",
+      "notes": "Deep-link routing based on initial CID/status.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "App",
+      "to": "ReviewED",
+      "type": "navigates",
+      "via": "App.OnStart Navigate(ReviewED)",
+      "notes": "Deep-link routing based on initial CID/status.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "App",
+      "to": "ReviewFGTD",
+      "type": "navigates",
+      "via": "App.OnStart Navigate(ReviewFGTD)",
+      "notes": "Deep-link routing based on initial CID/status.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "App",
+      "to": "ReviewPK",
+      "type": "navigates",
+      "via": "App.OnStart Navigate(ReviewPK)",
+      "notes": "Deep-link routing based on initial CID/status.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "App",
+      "to": "ReviewSG",
+      "type": "navigates",
+      "via": "App.OnStart Navigate(ReviewSG)",
+      "notes": "Deep-link routing based on initial CID/status.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "App",
+      "to": "SG",
+      "type": "navigates",
+      "via": "App.OnStart Navigate(SG)",
+      "notes": "Deep-link routing based on initial CID/status.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "App",
+      "to": "TD",
+      "type": "navigates",
+      "via": "App.OnStart Navigate(TD)",
+      "notes": "Deep-link routing based on initial CID/status.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "ED",
+      "to": "Portal",
+      "type": "navigates",
+      "via": "Navigate(Portal)",
+      "notes": "ED routes users into Portal based on action handlers.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "ED",
+      "to": "SharePoint.Choice",
+      "type": "updates",
+      "via": "SubmitForm/Patch pipeline",
+      "notes": "Writes to SharePoint.Choice inside ED.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "ED",
+      "to": "SharePoint.EDData",
+      "type": "updates",
+      "via": "SubmitForm/Patch pipeline",
+      "notes": "Writes to SharePoint.EDData inside ED.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "ED",
+      "to": "SharePoint.Main",
+      "type": "updates",
+      "via": "SubmitForm/Patch pipeline",
+      "notes": "Writes to SharePoint.Main inside ED.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "ED",
+      "to": "SharePoint.MatMasterQA",
+      "type": "updates",
+      "via": "SubmitForm/Patch pipeline",
+      "notes": "Writes to SharePoint.MatMasterQA inside ED.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "FG",
+      "to": "Portal",
+      "type": "navigates",
+      "via": "Navigate(Portal)",
+      "notes": "FG routes users into Portal based on action handlers.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "FG",
+      "to": "SharePoint.Choice",
+      "type": "updates",
+      "via": "SubmitForm/Patch pipeline",
+      "notes": "Writes to SharePoint.Choice inside FG.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "FG",
+      "to": "SharePoint.MRData",
+      "type": "updates",
+      "via": "SubmitForm/Patch pipeline",
+      "notes": "Writes to SharePoint.MRData inside FG.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "FG",
+      "to": "SharePoint.Main",
+      "type": "updates",
+      "via": "SubmitForm/Patch pipeline",
+      "notes": "Writes to SharePoint.Main inside FG.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "MatsReq-Print",
+      "to": "QaitReview",
+      "type": "navigates",
+      "via": "Navigate(QaitReview)",
+      "notes": "MatsReq-Print routes users into QaitReview based on action handlers.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "MatsReq-Print",
+      "to": "SharePoint.MRData",
+      "type": "reads",
+      "via": "LookUp/Refresh calls",
+      "notes": "Reads from SharePoint.MRData inside MatsReq-Print.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "MatsReq-Print",
+      "to": "SharePoint.Main",
+      "type": "reads",
+      "via": "LookUp/Refresh calls",
+      "notes": "Reads from SharePoint.Main inside MatsReq-Print.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "PkMReviewED",
+      "to": "Portal",
+      "type": "navigates",
+      "via": "Navigate(Portal)",
+      "notes": "PkMReviewED routes users into Portal based on action handlers.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "PkMReviewED",
+      "to": "SharePoint.Main",
+      "type": "updates",
+      "via": "SubmitForm/Patch pipeline",
+      "notes": "Writes to SharePoint.Main inside PkMReviewED.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "Portal",
+      "to": "ED",
+      "type": "navigates",
+      "via": "Navigate(ED)",
+      "notes": "Portal routes users into ED based on action handlers.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "Portal",
+      "to": "FG",
+      "type": "navigates",
+      "via": "Navigate(FG)",
+      "notes": "Portal routes users into FG based on action handlers.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "Portal",
+      "to": "Portal_Cases",
+      "type": "navigates",
+      "via": "Navigate(Portal_Cases)",
+      "notes": "Portal routes users into Portal_Cases based on action handlers.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "Portal",
+      "to": "RMPKNV",
+      "type": "navigates",
+      "via": "Navigate(RMPKNV)",
+      "notes": "Portal routes users into RMPKNV based on action handlers.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "Portal",
+      "to": "SG",
+      "type": "navigates",
+      "via": "Navigate(SG)",
+      "notes": "Portal routes users into SG based on action handlers.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "Portal",
+      "to": "TD",
+      "type": "navigates",
+      "via": "Navigate(TD)",
+      "notes": "Portal routes users into TD based on action handlers.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "Portal",
+      "to": "SharePoint.Choice",
+      "type": "reads",
+      "via": "LookUp/Refresh calls",
+      "notes": "Reads from SharePoint.Choice inside Portal.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "Portal",
+      "to": "SharePoint.Main",
+      "type": "reads",
+      "via": "LookUp/Refresh calls",
+      "notes": "Reads from SharePoint.Main inside Portal.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "Portal",
+      "to": "SharePoint.UserManagement",
+      "type": "reads",
+      "via": "LookUp/Refresh calls",
+      "notes": "Reads from SharePoint.UserManagement inside Portal.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "Portal_Cases",
+      "to": "ED",
+      "type": "navigates",
+      "via": "Navigate(ED)",
+      "notes": "Portal_Cases routes users into ED based on action handlers.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "Portal_Cases",
+      "to": "FG",
+      "type": "navigates",
+      "via": "Navigate(FG)",
+      "notes": "Portal_Cases routes users into FG based on action handlers.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "Portal_Cases",
+      "to": "Portal",
+      "type": "navigates",
+      "via": "Navigate(Portal)",
+      "notes": "Portal_Cases routes users into Portal based on action handlers.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "Portal_Cases",
+      "to": "QaitReview",
+      "type": "navigates",
+      "via": "Navigate(QaitReview)",
+      "notes": "Portal_Cases routes users into QaitReview based on action handlers.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "Portal_Cases",
+      "to": "RMPKNV",
+      "type": "navigates",
+      "via": "Navigate(RMPKNV)",
+      "notes": "Portal_Cases routes users into RMPKNV based on action handlers.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "Portal_Cases",
+      "to": "ReviewED",
+      "type": "navigates",
+      "via": "Navigate(ReviewED)",
+      "notes": "Portal_Cases routes users into ReviewED based on action handlers.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "Portal_Cases",
+      "to": "ReviewFGTD",
+      "type": "navigates",
+      "via": "Navigate(ReviewFGTD)",
+      "notes": "Portal_Cases routes users into ReviewFGTD based on action handlers.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "Portal_Cases",
+      "to": "ReviewPK",
+      "type": "navigates",
+      "via": "Navigate(ReviewPK)",
+      "notes": "Portal_Cases routes users into ReviewPK based on action handlers.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "Portal_Cases",
+      "to": "ReviewSG",
+      "type": "navigates",
+      "via": "Navigate(ReviewSG)",
+      "notes": "Portal_Cases routes users into ReviewSG based on action handlers.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "Portal_Cases",
+      "to": "SG",
+      "type": "navigates",
+      "via": "Navigate(SG)",
+      "notes": "Portal_Cases routes users into SG based on action handlers.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "Portal_Cases",
+      "to": "TD",
+      "type": "navigates",
+      "via": "Navigate(TD)",
+      "notes": "Portal_Cases routes users into TD based on action handlers.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "Portal_Cases",
+      "to": "SharePoint.Choice",
+      "type": "reads",
+      "via": "LookUp/Refresh calls",
+      "notes": "Reads from SharePoint.Choice inside Portal_Cases.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "Portal_Cases",
+      "to": "SharePoint.EDData",
+      "type": "reads",
+      "via": "LookUp/Refresh calls",
+      "notes": "Reads from SharePoint.EDData inside Portal_Cases.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "Portal_Cases",
+      "to": "SharePoint.Main",
+      "type": "reads",
+      "via": "LookUp/Refresh calls",
+      "notes": "Reads from SharePoint.Main inside Portal_Cases.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "Portal_Cases",
+      "to": "SharePoint.UserManagement",
+      "type": "reads",
+      "via": "LookUp/Refresh calls",
+      "notes": "Reads from SharePoint.UserManagement inside Portal_Cases.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "QaitFinal",
+      "to": "Portal",
+      "type": "navigates",
+      "via": "Navigate(Portal)",
+      "notes": "QaitFinal routes users into Portal based on action handlers.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "QaitFinal",
+      "to": "SharePoint.Main",
+      "type": "updates",
+      "via": "SubmitForm/Patch pipeline",
+      "notes": "Writes to SharePoint.Main inside QaitFinal.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "QaitReview",
+      "to": "Portal",
+      "type": "navigates",
+      "via": "Navigate(Portal)",
+      "notes": "QaitReview routes users into Portal based on action handlers.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "QaitReview",
+      "to": "Portal_Cases",
+      "type": "navigates",
+      "via": "Navigate(Portal_Cases)",
+      "notes": "QaitReview routes users into Portal_Cases based on action handlers.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "QaitReview",
+      "to": "QaitFinal",
+      "type": "navigates",
+      "via": "Navigate(QaitFinal)",
+      "notes": "QaitReview routes users into QaitFinal based on action handlers.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "QaitReview",
+      "to": "SharePoint.Choice",
+      "type": "updates",
+      "via": "SubmitForm/Patch pipeline",
+      "notes": "Writes to SharePoint.Choice inside QaitReview.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "QaitReview",
+      "to": "SharePoint.MRData",
+      "type": "updates",
+      "via": "SubmitForm/Patch pipeline",
+      "notes": "Writes to SharePoint.MRData inside QaitReview.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "QaitReview",
+      "to": "SharePoint.Main",
+      "type": "updates",
+      "via": "SubmitForm/Patch pipeline",
+      "notes": "Writes to SharePoint.Main inside QaitReview.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "RMPKNV",
+      "to": "Portal",
+      "type": "navigates",
+      "via": "Navigate(Portal)",
+      "notes": "RMPKNV routes users into Portal based on action handlers.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "RMPKNV",
+      "to": "SharePoint.Choice",
+      "type": "updates",
+      "via": "SubmitForm/Patch pipeline",
+      "notes": "Writes to SharePoint.Choice inside RMPKNV.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "RMPKNV",
+      "to": "SharePoint.MRData",
+      "type": "updates",
+      "via": "SubmitForm/Patch pipeline",
+      "notes": "Writes to SharePoint.MRData inside RMPKNV.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "RMPKNV",
+      "to": "SharePoint.Main",
+      "type": "updates",
+      "via": "SubmitForm/Patch pipeline",
+      "notes": "Writes to SharePoint.Main inside RMPKNV.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "ReviewED",
+      "to": "PkMReviewED",
+      "type": "navigates",
+      "via": "Navigate(PkMReviewED)",
+      "notes": "ReviewED routes users into PkMReviewED based on action handlers.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "ReviewED",
+      "to": "Portal",
+      "type": "navigates",
+      "via": "Navigate(Portal)",
+      "notes": "ReviewED routes users into Portal based on action handlers.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "ReviewED",
+      "to": "Portal_Cases",
+      "type": "navigates",
+      "via": "Navigate(Portal_Cases)",
+      "notes": "ReviewED routes users into Portal_Cases based on action handlers.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "ReviewED",
+      "to": "SharePoint.Choice",
+      "type": "updates",
+      "via": "SubmitForm/Patch pipeline",
+      "notes": "Writes to SharePoint.Choice inside ReviewED.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "ReviewED",
+      "to": "SharePoint.EDData",
+      "type": "updates",
+      "via": "SubmitForm/Patch pipeline",
+      "notes": "Writes to SharePoint.EDData inside ReviewED.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "ReviewED",
+      "to": "SharePoint.MRData",
+      "type": "updates",
+      "via": "SubmitForm/Patch pipeline",
+      "notes": "Writes to SharePoint.MRData inside ReviewED.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "ReviewED",
+      "to": "SharePoint.Main",
+      "type": "updates",
+      "via": "SubmitForm/Patch pipeline",
+      "notes": "Writes to SharePoint.Main inside ReviewED.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "ReviewFGTD",
+      "to": "Portal",
+      "type": "navigates",
+      "via": "Navigate(Portal)",
+      "notes": "ReviewFGTD routes users into Portal based on action handlers.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "ReviewFGTD",
+      "to": "Portal_Cases",
+      "type": "navigates",
+      "via": "Navigate(Portal_Cases)",
+      "notes": "ReviewFGTD routes users into Portal_Cases based on action handlers.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "ReviewFGTD",
+      "to": "SharePoint.Choice",
+      "type": "updates",
+      "via": "SubmitForm/Patch pipeline",
+      "notes": "Writes to SharePoint.Choice inside ReviewFGTD.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "ReviewFGTD",
+      "to": "SharePoint.MRData",
+      "type": "updates",
+      "via": "SubmitForm/Patch pipeline",
+      "notes": "Writes to SharePoint.MRData inside ReviewFGTD.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "ReviewFGTD",
+      "to": "SharePoint.Main",
+      "type": "updates",
+      "via": "SubmitForm/Patch pipeline",
+      "notes": "Writes to SharePoint.Main inside ReviewFGTD.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "ReviewFGTD",
+      "to": "SharePoint.Main.InspectionSetup",
+      "type": "updates",
+      "via": "SubmitForm/Patch pipeline",
+      "notes": "Writes to SharePoint.Main.InspectionSetup inside ReviewFGTD.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "ReviewPK",
+      "to": "Portal",
+      "type": "navigates",
+      "via": "Navigate(Portal)",
+      "notes": "ReviewPK routes users into Portal based on action handlers.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "ReviewPK",
+      "to": "Portal_Cases",
+      "type": "navigates",
+      "via": "Navigate(Portal_Cases)",
+      "notes": "ReviewPK routes users into Portal_Cases based on action handlers.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "ReviewPK",
+      "to": "SharePoint.Choice",
+      "type": "updates",
+      "via": "SubmitForm/Patch pipeline",
+      "notes": "Writes to SharePoint.Choice inside ReviewPK.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "ReviewPK",
+      "to": "SharePoint.MRData",
+      "type": "updates",
+      "via": "SubmitForm/Patch pipeline",
+      "notes": "Writes to SharePoint.MRData inside ReviewPK.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "ReviewPK",
+      "to": "SharePoint.Main",
+      "type": "updates",
+      "via": "SubmitForm/Patch pipeline",
+      "notes": "Writes to SharePoint.Main inside ReviewPK.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "ReviewSG",
+      "to": "Portal",
+      "type": "navigates",
+      "via": "Navigate(Portal)",
+      "notes": "ReviewSG routes users into Portal based on action handlers.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "ReviewSG",
+      "to": "Portal_Cases",
+      "type": "navigates",
+      "via": "Navigate(Portal_Cases)",
+      "notes": "ReviewSG routes users into Portal_Cases based on action handlers.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "ReviewSG",
+      "to": "SharePoint.Choice",
+      "type": "updates",
+      "via": "SubmitForm/Patch pipeline",
+      "notes": "Writes to SharePoint.Choice inside ReviewSG.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "ReviewSG",
+      "to": "SharePoint.MRData",
+      "type": "updates",
+      "via": "SubmitForm/Patch pipeline",
+      "notes": "Writes to SharePoint.MRData inside ReviewSG.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "ReviewSG",
+      "to": "SharePoint.Main",
+      "type": "updates",
+      "via": "SubmitForm/Patch pipeline",
+      "notes": "Writes to SharePoint.Main inside ReviewSG.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "ReviewSG",
+      "to": "SharePoint.Main.InspectionSetup",
+      "type": "updates",
+      "via": "SubmitForm/Patch pipeline",
+      "notes": "Writes to SharePoint.Main.InspectionSetup inside ReviewSG.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "SG",
+      "to": "Portal",
+      "type": "navigates",
+      "via": "Navigate(Portal)",
+      "notes": "SG routes users into Portal based on action handlers.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "SG",
+      "to": "SharePoint.Choice",
+      "type": "updates",
+      "via": "SubmitForm/Patch pipeline",
+      "notes": "Writes to SharePoint.Choice inside SG.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "SG",
+      "to": "SharePoint.MRData",
+      "type": "updates",
+      "via": "SubmitForm/Patch pipeline",
+      "notes": "Writes to SharePoint.MRData inside SG.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "SG",
+      "to": "SharePoint.Main",
+      "type": "updates",
+      "via": "SubmitForm/Patch pipeline",
+      "notes": "Writes to SharePoint.Main inside SG.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "TD",
+      "to": "Portal",
+      "type": "navigates",
+      "via": "Navigate(Portal)",
+      "notes": "TD routes users into Portal based on action handlers.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "TD",
+      "to": "SharePoint.Choice",
+      "type": "updates",
+      "via": "SubmitForm/Patch pipeline",
+      "notes": "Writes to SharePoint.Choice inside TD.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "TD",
+      "to": "SharePoint.MRData",
+      "type": "updates",
+      "via": "SubmitForm/Patch pipeline",
+      "notes": "Writes to SharePoint.MRData inside TD.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    },
+    {
+      "from": "TD",
+      "to": "SharePoint.Main",
+      "type": "updates",
+      "via": "SubmitForm/Patch pipeline",
+      "notes": "Writes to SharePoint.Main inside TD.",
+      "bidirectional": false,
+      "strength": "strong",
+      "created": "2025-10-06T08:49:09Z"
+    }
+  ],
+  "clusters": {
+    "case_entrypoints": {
+      "components": [
+        "Portal",
+        "Portal_Cases",
+        "MatsReq-Print"
+      ],
+      "purpose": "Expose dashboards, filters and print views for material requisition cases.",
+      "entry_points": [
+        "Portal",
+        "Portal_Cases"
+      ],
+      "data_flow": "User opens Portal -> filters via Portal_Cases -> optional print view through MatsReq-Print.",
+      "external_dependencies": [
+        "SharePoint.Main",
+        "SharePoint.UserManagement"
+      ],
+      "permissions": "Portal_Cases honours varPermission.* and CheckOwnCase filters.",
+      "workflow_states": [
+        "Draft",
+        "In-Progress",
+        "Send back",
+        "Completed",
+        "Rejected"
+      ]
+    },
+    "request_creation": {
+      "components": [
+        "ED",
+        "FG",
+        "SG",
+        "TD",
+        "RMPKNV"
+      ],
+      "purpose": "Capture new or amended material requisition details before routing for approval.",
+      "entry_points": [
+        "Portal quick actions",
+        "Deep links with cid parameter"
+      ],
+      "data_flow": "Form defaults from varCurrentCase -> user inputs -> SubmitForm -> MRData/EDData refreshed.",
+      "external_dependencies": [
+        "SharePoint.Main",
+        "SharePoint.MRData",
+        "SharePoint.EDData",
+        "SharePoint.Choice"
+      ],
+      "permissions": "Requestor role enforced upstream; submit formulas compute varTargetStatus.",
+      "workflow_states": [
+        "Draft",
+        "Submitted",
+        "Send back"
+      ]
+    },
+    "department_reviews": {
+      "components": [
+        "PkMReviewED",
+        "ReviewED",
+        "ReviewFGTD",
+        "ReviewPK",
+        "ReviewSG",
+        "QaitReview",
+        "QaitFinal"
+      ],
+      "purpose": "Departmental approval stages culminating in QA/IT final sign-off.",
+      "entry_points": [
+        "Portal_Cases",
+        "Workflow email deep links"
+      ],
+      "data_flow": "Case loaded via varCaseReviewID -> reviewers patch Main -> statuses drive next Navigate.",
+      "external_dependencies": [
+        "SharePoint.Main",
+        "SharePoint.MRData",
+        "SharePoint.UserManagement"
+      ],
+      "permissions": "Each screen unlocks actions based on varPermission flags per department.",
+      "workflow_states": [
+        "Manager Review",
+        "QA Review",
+        "IT Review",
+        "QA Final Review",
+        "Completed",
+        "Send back",
+        "Rejected"
+      ]
+    }
+  }
+}

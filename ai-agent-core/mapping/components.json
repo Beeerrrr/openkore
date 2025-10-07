@@ -1,0 +1,846 @@
+{
+  "_meta": {
+    "version": "1.0.0",
+    "purpose": "Component/Screen/View dictionary - prevents AI hallucination",
+    "last_updated": "2025-10-06T08:49:09Z",
+    "total_components": 15,
+    "total_controls_indexed": 2712,
+    "tech_stack": "Power Apps Canvas"
+  },
+  "ED": {
+    "type": "Screen",
+    "location": "Microsoft.PowerApps/apps/MATS-REQ/Src/ED.pa.yaml",
+    "parent": "App",
+    "children": [
+      "ED_FORM",
+      "FG_Additional_1"
+    ],
+    "dependencies": {
+      "variables": [
+        "varAC",
+        "varAdtn",
+        "varCaseID",
+        "varCaseStatus",
+        "varCaseType",
+        "varCheckCase",
+        "varCurrentCase",
+        "varIT",
+        "varPD",
+        "varPermission",
+        "varPurchase",
+        "varQA",
+        "varQAR1",
+        "varQAR2",
+        "varSubmittedCase",
+        "varTargetStatus",
+        "varURL",
+        "varWHFG",
+        "varWHRM"
+      ],
+      "components": [
+        "Portal"
+      ],
+      "external": [
+        "SharePoint.Choice",
+        "SharePoint.EDData",
+        "SharePoint.Main",
+        "SharePoint.MatMasterQA"
+      ]
+    },
+    "critical_properties": {
+      "OnVisible": "UpdateContext({varAdtn: false});",
+      "PrimaryForms": [
+        "ED_FORM"
+      ],
+      "KeyGalleries": [
+        "FG_Additional_1"
+      ],
+      "Collections": [
+        "AdtnItems",
+        "EDAdtnItems"
+      ]
+    },
+    "business_logic": "Edit/Delete change request form where requestors capture master-data adjustments before routing for approval.",
+    "tech_notes": "Data: SharePoint.Choice, SharePoint.EDData, SharePoint.Main, SharePoint.MatMasterQA; Forms: ED_FORM; Galleries: FG_Additional_1; Collections: AdtnItems, EDAdtnItems",
+    "workflow_state": "Draft -> Submitted",
+    "permissions": "Requestor-only from Portal; submit logic escalates based on Need QA and role flags.",
+    "last_modified": "2025-09-23T17:41:40+00:00",
+    "validation_rules": []
+  },
+  "FG": {
+    "type": "Screen",
+    "location": "Microsoft.PowerApps/apps/MATS-REQ/Src/FG.pa.yaml",
+    "parent": "App",
+    "children": [
+      "FG_Additional",
+      "FG_FORM"
+    ],
+    "dependencies": {
+      "variables": [
+        "varAC",
+        "varAdtn",
+        "varCID",
+        "varCaseID",
+        "varCaseType",
+        "varCheckCase",
+        "varCurrentCase",
+        "varIT",
+        "varPD",
+        "varPurchase",
+        "varQA",
+        "varQAR1",
+        "varQAR2",
+        "varSubmittedCase",
+        "varTargetStatus",
+        "varURL",
+        "varWHFG",
+        "varWHRM"
+      ],
+      "components": [
+        "Portal"
+      ],
+      "external": [
+        "SharePoint.Choice",
+        "SharePoint.MRData",
+        "SharePoint.Main"
+      ]
+    },
+    "critical_properties": {
+      "OnVisible": "UpdateContext({varAdtn: false});",
+      "PrimaryForms": [
+        "FG_FORM"
+      ],
+      "KeyGalleries": [
+        "FG_Additional"
+      ],
+      "Collections": [
+        "AdtnItems"
+      ]
+    },
+    "business_logic": "Finished Goods material requisition form with additional item grid and QA routing metadata.",
+    "tech_notes": "Data: SharePoint.Choice, SharePoint.MRData, SharePoint.Main; Forms: FG_FORM; Galleries: FG_Additional; Collections: AdtnItems",
+    "workflow_state": "Draft -> Submitted",
+    "permissions": "Requestor-only creation; submission routes according to status flags set into Main and MRData.",
+    "last_modified": "2025-09-23T17:41:38+00:00",
+    "validation_rules": []
+  },
+  "MatsReq-Print": {
+    "type": "Screen",
+    "location": "Microsoft.PowerApps/apps/MATS-REQ/Src/MatsReq-Print.pa.yaml",
+    "parent": "App",
+    "children": [
+      "Gal_Item+",
+      "Qait_Attachments_1"
+    ],
+    "dependencies": {
+      "variables": [
+        "varAnyOnPrint",
+        "varAnyOnPrintID"
+      ],
+      "components": [
+        "QaitReview"
+      ],
+      "external": [
+        "SharePoint.MRData",
+        "SharePoint.Main"
+      ]
+    },
+    "critical_properties": {
+      "OnVisible": "Set(varAnyOnPrint,LookUp(Main,ID = Value(PRINT_REF_ID.Text)))",
+      "KeyGalleries": [
+        "Gal_Item+",
+        "Qait_Attachments_1"
+      ]
+    },
+    "business_logic": "Printable snapshot of a material requisition including attachments for QA/IT documentation.",
+    "tech_notes": "Data: SharePoint.MRData, SharePoint.Main; Galleries: Gal_Item+, Qait_Attachments_1",
+    "workflow_state": "Support",
+    "permissions": "Available to reviewers with case access, driven by varAnyOnPrintID lookups.",
+    "last_modified": "2025-09-23T17:41:40+00:00",
+    "validation_rules": []
+  },
+  "PkMReviewED": {
+    "type": "Screen",
+    "location": "Microsoft.PowerApps/apps/MATS-REQ/Src/PkMReviewED.pa.yaml",
+    "parent": "App",
+    "children": [
+      "PK_PkM_FORM_1"
+    ],
+    "dependencies": {
+      "variables": [
+        "varAC",
+        "varCaseID",
+        "varCaseReviewID",
+        "varCaseType",
+        "varCurrentCaseJa",
+        "varIT",
+        "varPD",
+        "varPermission",
+        "varPurchase",
+        "varQA",
+        "varQAR1",
+        "varQAR2",
+        "varURL",
+        "varWHFG",
+        "varWHRM"
+      ],
+      "components": [
+        "Portal"
+      ],
+      "external": [
+        "SharePoint.Main"
+      ]
+    },
+    "critical_properties": {
+      "PrimaryForms": [
+        "PK_PkM_FORM_1"
+      ]
+    },
+    "business_logic": "Packaging manager review surface for ED submissions capturing comments and decision flags.",
+    "tech_notes": "Data: SharePoint.Main; Forms: PK_PkM_FORM_1",
+    "workflow_state": "Submitted -> Review -> Completed / Send back",
+    "permissions": "Requires varPermission.PKManager before form submissions are enabled.",
+    "last_modified": "2025-09-23T17:41:40+00:00",
+    "validation_rules": []
+  },
+  "Portal": {
+    "type": "Screen",
+    "location": "Microsoft.PowerApps/apps/MATS-REQ/Src/Portal.pa.yaml",
+    "parent": "App",
+    "children": [],
+    "dependencies": {
+      "variables": [
+        "varCID",
+        "varCaseID",
+        "varCaseReview",
+        "varCaseReviewID",
+        "varCaseStatus",
+        "varCaseType",
+        "varCheckCase",
+        "varCurrentCase",
+        "varMainRecord",
+        "varMainSubmitRecord",
+        "varRequestorEmail",
+        "varUpdateStatus"
+      ],
+      "components": [
+        "ED",
+        "FG",
+        "Portal_Cases",
+        "RMPKNV",
+        "SG",
+        "TD"
+      ],
+      "external": [
+        "SharePoint.Choice",
+        "SharePoint.Main",
+        "SharePoint.UserManagement"
+      ]
+    },
+    "critical_properties": {
+      "OnVisible": "Refresh(Main); Set(varCheckCase,Blank());",
+      "Collections": [
+        "AdtnItems",
+        "EDAdtnItems"
+      ]
+    },
+    "business_logic": "Landing dashboard summarising request workload and launching creation or review actions.",
+    "tech_notes": "Data: SharePoint.Choice, SharePoint.Main, SharePoint.UserManagement; Collections: AdtnItems, EDAdtnItems",
+    "workflow_state": "Active",
+    "permissions": "Available to all licensed users; downstream actions still respect SharePoint list security.",
+    "last_modified": "2025-09-23T17:41:40+00:00",
+    "validation_rules": []
+  },
+  "Portal_Cases": {
+    "type": "Screen",
+    "location": "Microsoft.PowerApps/apps/MATS-REQ/Src/Portal_Cases.pa.yaml",
+    "parent": "App",
+    "children": [
+      "Portal_Cases_Gallery"
+    ],
+    "dependencies": {
+      "variables": [
+        "varCaseID",
+        "varCaseReviewID",
+        "varCaseStatus",
+        "varCaseType",
+        "varCheckCase",
+        "varCurrentCase",
+        "varPermission",
+        "varRequestorEmail",
+        "varUpdateStatus",
+        "varUserEmail",
+        "varUserInvolved"
+      ],
+      "components": [
+        "ED",
+        "FG",
+        "Portal",
+        "QaitReview",
+        "RMPKNV",
+        "ReviewED",
+        "ReviewFGTD",
+        "ReviewPK",
+        "ReviewSG",
+        "SG",
+        "TD"
+      ],
+      "external": [
+        "SharePoint.Choice",
+        "SharePoint.EDData",
+        "SharePoint.Main",
+        "SharePoint.UserManagement"
+      ]
+    },
+    "critical_properties": {
+      "KeyGalleries": [
+        "Portal_Cases_Gallery"
+      ],
+      "Collections": [
+        "AdtnItems",
+        "EDAdtnItems",
+        "colUserPermissions",
+        "colUserPermissionsActive"
+      ]
+    },
+    "business_logic": "Case explorer with filters (My/Assigned/All) that drives navigation into review or resubmission screens.",
+    "tech_notes": "Data: SharePoint.Choice, SharePoint.EDData, SharePoint.Main, SharePoint.UserManagement; Galleries: Portal_Cases_Gallery; Collections: AdtnItems, EDAdtnItems, colUserPermissions, colUserPermissionsActive",
+    "workflow_state": "Active",
+    "permissions": "Buttons respect varPermission flags to avoid navigating users without review rights.",
+    "last_modified": "2025-09-23T17:41:42+00:00",
+    "validation_rules": []
+  },
+  "QaitFinal": {
+    "type": "Screen",
+    "location": "Microsoft.PowerApps/apps/MATS-REQ/Src/QaitFinal.pa.yaml",
+    "parent": "App",
+    "children": [],
+    "dependencies": {
+      "variables": [
+        "varAC",
+        "varCaseID",
+        "varCaseReviewID",
+        "varCaseStatus",
+        "varCaseType",
+        "varCheckCase",
+        "varCurrentCase",
+        "varCurrentCaseJa",
+        "varIT",
+        "varPD",
+        "varPermission",
+        "varPurchase",
+        "varQA",
+        "varQAR1",
+        "varQAR2",
+        "varURL",
+        "varWHFG",
+        "varWHRM"
+      ],
+      "components": [
+        "Portal"
+      ],
+      "external": [
+        "SharePoint.Main"
+      ]
+    },
+    "critical_properties": {
+      "OnVisible": "Reset(CB_IT_MatCode); Reset(CB_IT_CMM); Reset(CB_QAR_CMM); Reset(CB_QAFR_CMM); Reset(CB_APPROVE); Reset(CB_SENDBACK); Reset(CB_REJECT);"
+    },
+    "business_logic": "Final QA/IT decision point recording approvals, send backs or rejections before closing a case.",
+    "tech_notes": "Data: SharePoint.Main",
+    "workflow_state": "QA Final -> Completed / Send back / Rejected",
+    "permissions": "Only QA/IT reviewers can finalise via this screen.",
+    "last_modified": "2025-09-23T17:41:40+00:00",
+    "validation_rules": []
+  },
+  "QaitReview": {
+    "type": "Screen",
+    "location": "Microsoft.PowerApps/apps/MATS-REQ/Src/QaitReview.pa.yaml",
+    "parent": "App",
+    "children": [
+      "FGTD_Review_Gal_2",
+      "Qait_Attachments",
+      "Qait_FORM"
+    ],
+    "dependencies": {
+      "variables": [
+        "varAdtn",
+        "varAnyOnPrintID",
+        "varCaseReviewID",
+        "varCheckCase",
+        "varCurrentCase",
+        "varPermission"
+      ],
+      "components": [
+        "Portal",
+        "Portal_Cases",
+        "QaitFinal"
+      ],
+      "external": [
+        "SharePoint.Choice",
+        "SharePoint.MRData",
+        "SharePoint.Main"
+      ]
+    },
+    "critical_properties": {
+      "PrimaryForms": [
+        "Qait_FORM"
+      ],
+      "KeyGalleries": [
+        "FGTD_Review_Gal_2",
+        "Qait_Attachments"
+      ],
+      "Collections": [
+        "AdtnItems"
+      ]
+    },
+    "business_logic": "Joint QA/IT review stage handling QA comments, IT mat codes and print preview triggers.",
+    "tech_notes": "Data: SharePoint.Choice, SharePoint.MRData, SharePoint.Main; Forms: Qait_FORM; Galleries: FGTD_Review_Gal_2, Qait_Attachments; Collections: AdtnItems",
+    "workflow_state": "QA Review -> QA Final -> Completed / Send back",
+    "permissions": "Requires QA/IT permission flags to proceed through review.",
+    "last_modified": "2025-09-23T17:41:40+00:00",
+    "validation_rules": []
+  },
+  "RMPKNV": {
+    "type": "Screen",
+    "location": "Microsoft.PowerApps/apps/MATS-REQ/Src/RMPKNV.pa.yaml",
+    "parent": "App",
+    "children": [
+      "PK_Additional",
+      "PK_FORM"
+    ],
+    "dependencies": {
+      "variables": [
+        "varAC",
+        "varAdtn",
+        "varCID",
+        "varCaseID",
+        "varCaseType",
+        "varCheckCase",
+        "varCurrentCase",
+        "varCurrentCaseJa",
+        "varIT",
+        "varPD",
+        "varPermission",
+        "varPurchase",
+        "varQA",
+        "varQAR1",
+        "varQAR2",
+        "varSubmittedCase",
+        "varTargetStatus",
+        "varURL",
+        "varWHFG",
+        "varWHRM"
+      ],
+      "components": [
+        "Portal"
+      ],
+      "external": [
+        "SharePoint.Choice",
+        "SharePoint.MRData",
+        "SharePoint.Main"
+      ]
+    },
+    "critical_properties": {
+      "OnVisible": "UpdateContext({varAdtn: false});",
+      "PrimaryForms": [
+        "PK_FORM"
+      ],
+      "KeyGalleries": [
+        "PK_Additional"
+      ],
+      "Collections": [
+        "AdtnItems"
+      ]
+    },
+    "business_logic": "Raw material / packaging / non-value requisition form with PK-specific fields and additional line handling.",
+    "tech_notes": "Data: SharePoint.Choice, SharePoint.MRData, SharePoint.Main; Forms: PK_FORM; Galleries: PK_Additional; Collections: AdtnItems",
+    "workflow_state": "Draft -> Submitted",
+    "permissions": "Requestor-only creation for RM/PK/NV categories.",
+    "last_modified": "2025-09-23T17:41:38+00:00",
+    "validation_rules": []
+  },
+  "ReviewED": {
+    "type": "Screen",
+    "location": "Microsoft.PowerApps/apps/MATS-REQ/Src/ReviewED.pa.yaml",
+    "parent": "App",
+    "children": [
+      "ED_REVIEW_FORM",
+      "FGTD_Attachments_1",
+      "FG_Additional_6"
+    ],
+    "dependencies": {
+      "variables": [
+        "varAC",
+        "varAdtn",
+        "varCaseID",
+        "varCaseReviewID",
+        "varCaseStatus",
+        "varCaseType",
+        "varCheckCase",
+        "varCurrentCase",
+        "varCurrentCaseJa",
+        "varIT",
+        "varPD",
+        "varPermission",
+        "varPurchase",
+        "varQA",
+        "varQAR1",
+        "varQAR2",
+        "varURL",
+        "varWHFG",
+        "varWHRM"
+      ],
+      "components": [
+        "PkMReviewED",
+        "Portal",
+        "Portal_Cases"
+      ],
+      "external": [
+        "SharePoint.Choice",
+        "SharePoint.EDData",
+        "SharePoint.MRData",
+        "SharePoint.Main"
+      ]
+    },
+    "critical_properties": {
+      "OnVisible": "ResetForm(ED_REVIEW_FORM);",
+      "PrimaryForms": [
+        "ED_REVIEW_FORM"
+      ],
+      "KeyGalleries": [
+        "FGTD_Attachments_1",
+        "FG_Additional_6"
+      ],
+      "Collections": [
+        "AdtnItems"
+      ]
+    },
+    "business_logic": "QA and departmental review workspace for Edit/Delete cases with patch back into Main.",
+    "tech_notes": "Data: SharePoint.Choice, SharePoint.EDData, SharePoint.MRData, SharePoint.Main; Forms: ED_REVIEW_FORM; Galleries: FGTD_Attachments_1, FG_Additional_6; Collections: AdtnItems",
+    "workflow_state": "Submitted -> Review -> Completed / Send back",
+    "permissions": "QA, IT and other flags from varPermission control which action cards unlock.",
+    "last_modified": "2025-09-23T17:41:40+00:00",
+    "validation_rules": []
+  },
+  "ReviewFGTD": {
+    "type": "Screen",
+    "location": "Microsoft.PowerApps/apps/MATS-REQ/Src/ReviewFGTD.pa.yaml",
+    "parent": "App",
+    "children": [
+      "FGTD_ACC_FORM",
+      "FGTD_Attachments",
+      "FGTD_QA_FORM",
+      "FGTD_REVIEW_FORM",
+      "FGTD_Review_Gal",
+      "FGTD_WHFG_FORM"
+    ],
+    "dependencies": {
+      "variables": [
+        "varAC",
+        "varCID",
+        "varCaseID",
+        "varCaseReviewID",
+        "varCaseType",
+        "varCheckCase",
+        "varCurrentCase",
+        "varCurrentCaseJa",
+        "varIT",
+        "varPD",
+        "varPermission",
+        "varPurchase",
+        "varQA",
+        "varQAR1",
+        "varQAR2",
+        "varURL",
+        "varWHFG",
+        "varWHRM"
+      ],
+      "components": [
+        "Portal",
+        "Portal_Cases"
+      ],
+      "external": [
+        "SharePoint.Choice",
+        "SharePoint.MRData",
+        "SharePoint.Main",
+        "SharePoint.Main.InspectionSetup"
+      ]
+    },
+    "critical_properties": {
+      "OnVisible": "ResetForm(FGTD_ACC_FORM); ResetForm(FGTD_WHFG_FORM); ResetForm(FGTD_QA_FORM);",
+      "PrimaryForms": [
+        "FGTD_ACC_FORM",
+        "FGTD_QA_FORM",
+        "FGTD_REVIEW_FORM",
+        "FGTD_WHFG_FORM"
+      ],
+      "KeyGalleries": [
+        "FGTD_Attachments",
+        "FGTD_Review_Gal"
+      ],
+      "Collections": [
+        "AdtnItems"
+      ]
+    },
+    "business_logic": "Cross-department review hub for FG/TD cases servicing ACC, WHFG and QA inputs.",
+    "tech_notes": "Data: SharePoint.Choice, SharePoint.MRData, SharePoint.Main, SharePoint.Main.InspectionSetup; Forms: FGTD_ACC_FORM, FGTD_QA_FORM, FGTD_REVIEW_FORM, FGTD_WHFG_FORM; Galleries: FGTD_Attachments, FGTD_Review_Gal; Collections: AdtnItems",
+    "workflow_state": "Submitted -> Multi-department review -> Completed / Send back",
+    "permissions": "ACC/WHFG/QA submit buttons check respective varPermission flags.",
+    "last_modified": "2025-09-23T17:41:40+00:00",
+    "validation_rules": []
+  },
+  "ReviewPK": {
+    "type": "Screen",
+    "location": "Microsoft.PowerApps/apps/MATS-REQ/Src/ReviewPK.pa.yaml",
+    "parent": "App",
+    "children": [
+      "FG_Additional_5",
+      "PKR_Additional",
+      "PK_ACC_FORM",
+      "PK_Attachments",
+      "PK_PD_FORM",
+      "PK_PkM_FORM",
+      "PK_QA_FORM",
+      "PK_Review_FORM",
+      "PK_WHRM_FORM"
+    ],
+    "dependencies": {
+      "variables": [
+        "varAC",
+        "varAdtn",
+        "varCID",
+        "varCaseID",
+        "varCaseReviewID",
+        "varCaseType",
+        "varCheckCase",
+        "varCurrentCase",
+        "varCurrentCaseJa",
+        "varIT",
+        "varPD",
+        "varPermission",
+        "varPurchase",
+        "varQA",
+        "varQAR1",
+        "varQAR2",
+        "varURL",
+        "varWHFG",
+        "varWHRM"
+      ],
+      "components": [
+        "Portal",
+        "Portal_Cases"
+      ],
+      "external": [
+        "SharePoint.Choice",
+        "SharePoint.MRData",
+        "SharePoint.Main"
+      ]
+    },
+    "critical_properties": {
+      "OnVisible": "UpdateContext({varAdtn: false}); ResetForm(PK_PkM_FORM); ResetForm(PK_WHRM_FORM); ResetForm(PK_QA_FORM); ResetForm(PK_PD_FORM); ResetForm(PK_ACC_FORM);",
+      "PrimaryForms": [
+        "PK_ACC_FORM",
+        "PK_PD_FORM",
+        "PK_PkM_FORM",
+        "PK_QA_FORM",
+        "PK_Review_FORM",
+        "PK_WHRM_FORM"
+      ],
+      "KeyGalleries": [
+        "FG_Additional_5",
+        "PKR_Additional",
+        "PK_Attachments"
+      ],
+      "Collections": [
+        "AdtnItems"
+      ]
+    },
+    "business_logic": "Packaging review centre for RM/PK/NV cases coordinating departmental sign-off.",
+    "tech_notes": "Data: SharePoint.Choice, SharePoint.MRData, SharePoint.Main; Forms: PK_ACC_FORM, PK_PD_FORM, PK_PkM_FORM, PK_QA_FORM, PK_Review_FORM, PK_WHRM_FORM; Galleries: FG_Additional_5, PKR_Additional, PK_Attachments; Collections: AdtnItems",
+    "workflow_state": "Submitted -> Multi-department review -> Completed / Send back",
+    "permissions": "Department cards gated by varPermission.* booleans.",
+    "last_modified": "2025-09-23T17:41:40+00:00",
+    "validation_rules": []
+  },
+  "ReviewSG": {
+    "type": "Screen",
+    "location": "Microsoft.PowerApps/apps/MATS-REQ/Src/ReviewSG.pa.yaml",
+    "parent": "App",
+    "children": [
+      "FGTD_Review_Gal_1",
+      "SG_ACC_FORM",
+      "SG_Attachments",
+      "SG_QA_FORM",
+      "SG_REVIEW_FORM"
+    ],
+    "dependencies": {
+      "variables": [
+        "varAC",
+        "varAdtn",
+        "varCID",
+        "varCaseID",
+        "varCaseReviewID",
+        "varCaseType",
+        "varCheckCase",
+        "varCurrentCase",
+        "varCurrentCaseJa",
+        "varIT",
+        "varPD",
+        "varPermission",
+        "varPurchase",
+        "varQA",
+        "varQAR1",
+        "varQAR2",
+        "varURL",
+        "varWHFG",
+        "varWHRM"
+      ],
+      "components": [
+        "Portal",
+        "Portal_Cases"
+      ],
+      "external": [
+        "SharePoint.Choice",
+        "SharePoint.MRData",
+        "SharePoint.Main",
+        "SharePoint.Main.InspectionSetup"
+      ]
+    },
+    "critical_properties": {
+      "OnVisible": "ResetForm(SG_ACC_FORM); ResetForm(SG_QA_FORM);",
+      "PrimaryForms": [
+        "SG_ACC_FORM",
+        "SG_QA_FORM",
+        "SG_REVIEW_FORM"
+      ],
+      "KeyGalleries": [
+        "FGTD_Review_Gal_1",
+        "SG_Attachments"
+      ],
+      "Collections": [
+        "AdtnItems"
+      ]
+    },
+    "business_logic": "Semi-finished goods review screen coordinating QA and ACC decisions.",
+    "tech_notes": "Data: SharePoint.Choice, SharePoint.MRData, SharePoint.Main, SharePoint.Main.InspectionSetup; Forms: SG_ACC_FORM, SG_QA_FORM, SG_REVIEW_FORM; Galleries: FGTD_Review_Gal_1, SG_Attachments; Collections: AdtnItems",
+    "workflow_state": "Submitted -> Multi-department review -> Completed / Send back",
+    "permissions": "QA/ACC gating follows varPermission checks.",
+    "last_modified": "2025-09-23T17:41:40+00:00",
+    "validation_rules": []
+  },
+  "SG": {
+    "type": "Screen",
+    "location": "Microsoft.PowerApps/apps/MATS-REQ/Src/SG.pa.yaml",
+    "parent": "App",
+    "children": [
+      "FG_Additional_2",
+      "SG_FORM"
+    ],
+    "dependencies": {
+      "variables": [
+        "varAC",
+        "varAdtn",
+        "varCID",
+        "varCaseID",
+        "varCaseType",
+        "varCheckCase",
+        "varCurrentCase",
+        "varIT",
+        "varPD",
+        "varPurchase",
+        "varQA",
+        "varQAR1",
+        "varQAR2",
+        "varSubmittedCase",
+        "varTargetStatus",
+        "varURL",
+        "varWHFG",
+        "varWHRM"
+      ],
+      "components": [
+        "Portal"
+      ],
+      "external": [
+        "SharePoint.Choice",
+        "SharePoint.MRData",
+        "SharePoint.Main"
+      ]
+    },
+    "critical_properties": {
+      "OnVisible": "UpdateContext({varAdtn: false});",
+      "PrimaryForms": [
+        "SG_FORM"
+      ],
+      "KeyGalleries": [
+        "FG_Additional_2"
+      ],
+      "Collections": [
+        "AdtnItems"
+      ]
+    },
+    "business_logic": "Semi-finished goods requisition form mirroring FG with SG-specific defaulting and attachments.",
+    "tech_notes": "Data: SharePoint.Choice, SharePoint.MRData, SharePoint.Main; Forms: SG_FORM; Galleries: FG_Additional_2; Collections: AdtnItems",
+    "workflow_state": "Draft -> Submitted",
+    "permissions": "Requestor-only creation; identical gating to FG but SG-specific defaults.",
+    "last_modified": "2025-09-23T17:41:40+00:00",
+    "validation_rules": []
+  },
+  "TD": {
+    "type": "Screen",
+    "location": "Microsoft.PowerApps/apps/MATS-REQ/Src/TD.pa.yaml",
+    "parent": "App",
+    "children": [
+      "FG_Additional_3",
+      "TD_FORM"
+    ],
+    "dependencies": {
+      "variables": [
+        "varAC",
+        "varAdtn",
+        "varCID",
+        "varCaseID",
+        "varCaseType",
+        "varCheckCase",
+        "varCurrentCase",
+        "varIT",
+        "varPD",
+        "varPurchase",
+        "varQA",
+        "varQAR1",
+        "varQAR2",
+        "varSubmittedCase",
+        "varTargetStatus",
+        "varURL",
+        "varWHFG",
+        "varWHRM"
+      ],
+      "components": [
+        "Portal"
+      ],
+      "external": [
+        "SharePoint.Choice",
+        "SharePoint.MRData",
+        "SharePoint.Main"
+      ]
+    },
+    "critical_properties": {
+      "OnVisible": "UpdateContext({varAdtn: false});",
+      "PrimaryForms": [
+        "TD_FORM"
+      ],
+      "KeyGalleries": [
+        "FG_Additional_3"
+      ],
+      "Collections": [
+        "AdtnItems"
+      ]
+    },
+    "business_logic": "Trading product requisition form capturing trading SKU details, UOMs and supporting documents.",
+    "tech_notes": "Data: SharePoint.Choice, SharePoint.MRData, SharePoint.Main; Forms: TD_FORM; Galleries: FG_Additional_3; Collections: AdtnItems",
+    "workflow_state": "Draft -> Submitted",
+    "permissions": "Requestor-only creation; trading flows enforce same permission checks.",
+    "last_modified": "2025-09-23T17:41:40+00:00",
+    "validation_rules": []
+  }
+}

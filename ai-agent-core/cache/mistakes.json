@@ -1,0 +1,31 @@
+{
+  "_meta": {
+    "version": "1.0.0",
+    "purpose": "Track repeated mistakes to prevent future errors",
+    "last_updated": "ISO_TIMESTAMP_PLACEHOLDER",
+    "total_mistakes": 0,
+    "total_prevented": 0
+  },
+  "_template": {
+    "mistake_id": {
+      "pattern": "Description of what went wrong",
+      "correct_approach": "The right way to handle this",
+      "warning_signs": [
+        "Indicators this mistake might happen",
+        "Patterns to watch for"
+      ],
+      "frequency": 0,
+      "prevented_count": 0,
+      "last_occurred": "ISO_TIMESTAMP",
+      "last_prevented": "ISO_TIMESTAMP",
+      "contexts": [
+        "Where this mistake happens",
+        "Tech stack specific scenarios"
+      ],
+      "tech_stack": "Power Platform | React | Django | Generic | All",
+      "severity": "high | medium | low",
+      "cost_impact": "How much this mistake costs in tokens/time",
+      "resolution_status": "active | resolved | monitoring"
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "project": {
+    "name": "PROJECT_NAME_PLACEHOLDER",
+    "tech_stack": "TECH_STACK_PLACEHOLDER",
+    "repository": "REPOSITORY_URL_PLACEHOLDER",
+    "timezone": "TIMEZONE_PLACEHOLDER",
+    "initialized": "ISO_TIMESTAMP_PLACEHOLDER"
+  },
+  "ai_system": {
+    "version": "1.0.1",
+    "cache_enabled": true,
+    "mapping_enabled": true,
+    "auto_load_on_startup": true,
+    "anti_hallucination": true,
+    "last_health_check": null
+  },
+  "statistics": {
+    "total_solutions": 0,
+    "total_reuses": 0,
+    "prevented_mistakes": 0,
+    "components_mapped": 0,
+    "variables_mapped": 0,
+    "dependencies_mapped": 0,
+    "token_savings_estimate": "0%",
+    "cache_hit_rate": "0%",
+    "first_conversation": null,
+    "last_conversation": null,
+    "total_conversations": 0
+  },
+  "health_metrics": {
+    "cache_effectiveness": "Not enough data",
+    "mapping_coverage": "0%",
+    "hallucination_prevention_rate": "0%",
+    "average_response_time": "N/A",
+    "total_token_savings": 0
+  },
+  "warnings": [],
+  "notes": [
+    "This file is auto-updated by AI after every response",
+    "Check 'statistics' to see token savings",
+    "Check 'warnings' if cache becomes outdated"
+  ]
+}

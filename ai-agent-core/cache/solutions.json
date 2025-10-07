@@ -1,0 +1,37 @@
+{
+  "_meta": {
+    "version": "1.0.0",
+    "purpose": "Cache of proven solutions for reuse",
+    "last_updated": "ISO_TIMESTAMP_PLACEHOLDER",
+    "total_solutions": 0,
+    "total_reuses": 0
+  },
+  "_template": {
+    "solution_id": {
+      "status": "working | deprecated | testing",
+      "problem": "Brief description of the problem",
+      "solution": "What fixed it (plain English)",
+      "tech_stack": "Power Platform | React | Django | Generic",
+      "files_changed": [
+        "path/to/file.ext:line_number"
+      ],
+      "critical_edits": {
+        "file_path_line": "What was changed and why"
+      },
+      "success_rate": "100%",
+      "reuse_count": 0,
+      "created": "ISO_TIMESTAMP",
+      "last_used": "ISO_TIMESTAMP",
+      "contexts": [
+        "Where this solution applies"
+      ],
+      "dependencies": [
+        "What this solution requires"
+      ],
+      "validation": "How to verify the fix worked",
+      "rollback": "How to undo if needed",
+      "replaces": null,
+      "replaced_by": null
+    }
+  }
+}

@@ -1,0 +1,1466 @@
+{
+  "_meta": {
+    "version": "1.0.0",
+    "purpose": "Variable/State index - prevents scope hallucination",
+    "last_updated": "2025-10-06T08:49:09Z",
+    "total_variables": 38,
+    "tech_stack": "Power Apps Canvas"
+  },
+  "varAdtn": {
+    "scope": "global",
+    "type": "boolean",
+    "description": "Toggles whether additional item sections are expanded on create/review screens.",
+    "defined_in": "App.OnStart",
+    "used_by": [
+      "ED",
+      "FG",
+      "QaitReview",
+      "RMPKNV",
+      "ReviewED",
+      "ReviewPK",
+      "ReviewSG",
+      "SG",
+      "TD"
+    ],
+    "cross_references": {
+      "sets": [
+        "App.OnStart",
+        "ED.UpdateContext",
+        "FG.UpdateContext",
+        "QaitReview.UpdateContext",
+        "RMPKNV.UpdateContext",
+        "ReviewED.UpdateContext",
+        "ReviewPK.UpdateContext",
+        "SG.UpdateContext",
+        "TD.UpdateContext"
+      ],
+      "reads": [
+        "ED.fx",
+        "FG.fx",
+        "QaitReview.fx",
+        "RMPKNV.fx",
+        "ReviewED.fx",
+        "ReviewPK.fx",
+        "ReviewSG.fx",
+        "SG.fx",
+        "TD.fx"
+      ]
+    },
+    "lifecycle": "Initialised false on start; toggled per screen via UpdateContext when the user expands extra detail.",
+    "sample_value": "true",
+    "validation": "Boolean only.",
+    "permissions": "Session scoped variable accessible to all screens.",
+    "last_modified": "2025-10-06T08:49:09Z"
+  },
+  "varUserEmail": {
+    "scope": "global",
+    "type": "string",
+    "description": "Lower-cased email of the signed-in user used for permission lookups.",
+    "defined_in": "App.OnStart",
+    "used_by": [
+      "Portal_Cases"
+    ],
+    "cross_references": {
+      "sets": [
+        "App.OnStart",
+        "Portal_Cases.Set",
+        "Portal_Cases.UpdateContext"
+      ],
+      "reads": [
+        "Portal_Cases.fx"
+      ]
+    },
+    "lifecycle": "Set on App.OnStart using User().Email and persists for session.",
+    "sample_value": "someone@example.com",
+    "validation": "Trimmed, lower-case email string.",
+    "permissions": "Derived from current user context.",
+    "last_modified": "2025-10-06T08:49:09Z"
+  },
+  "varPermission": {
+    "scope": "global",
+    "type": "Record",
+    "description": "Permission record fetched from UserManagement defining departmental access flags.",
+    "defined_in": "App.OnStart",
+    "used_by": [
+      "ED",
+      "PkMReviewED",
+      "Portal_Cases",
+      "QaitFinal",
+      "QaitReview",
+      "RMPKNV",
+      "ReviewED",
+      "ReviewFGTD",
+      "ReviewPK",
+      "ReviewSG"
+    ],
+    "cross_references": {
+      "sets": [
+        "App.OnStart",
+        "Portal_Cases.UpdateContext",
+        "RMPKNV.UpdateContext"
+      ],
+      "reads": [
+        "ED.fx",
+        "PkMReviewED.fx",
+        "Portal_Cases.fx",
+        "QaitFinal.fx",
+        "QaitReview.fx",
+        "RMPKNV.fx",
+        "ReviewED.fx",
+        "ReviewFGTD.fx",
+        "ReviewPK.fx",
+        "ReviewSG.fx"
+      ]
+    },
+    "lifecycle": "Loaded on App.OnStart via LookUp(UserManagement, Email).",
+    "sample_value": "{QA: true, IT: false, PKManager: true, ...}",
+    "validation": "Record must include expected boolean flags.",
+    "permissions": "Read-only snapshot of UserManagement row.",
+    "last_modified": "2025-10-06T08:49:09Z"
+  },
+  "varDirectReport": {
+    "scope": "global",
+    "type": "string",
+    "description": "Direct report email/name for the current user pulled from UserManagement.",
+    "defined_in": "App.OnStart",
+    "used_by": [],
+    "cross_references": {
+      "sets": [
+        "App.OnStart"
+      ],
+      "reads": []
+    },
+    "lifecycle": "Set on App.OnStart; unused screens may ignore.",
+    "sample_value": "manager@example.com",
+    "validation": "Optional string.",
+    "permissions": "Derived from UserManagement.",
+    "last_modified": "2025-10-06T08:49:09Z"
+  },
+  "varCID": {
+    "scope": "global",
+    "type": "string",
+    "description": "Query-string CID parameter used to deep-link into a specific case.",
+    "defined_in": "App.OnStart",
+    "used_by": [
+      "FG",
+      "Portal",
+      "RMPKNV",
+      "ReviewFGTD",
+      "ReviewPK",
+      "ReviewSG",
+      "SG",
+      "TD"
+    ],
+    "cross_references": {
+      "sets": [
+        "App.OnStart",
+        "Portal.Set"
+      ],
+      "reads": [
+        "FG.fx",
+        "Portal.fx",
+        "RMPKNV.fx",
+        "ReviewFGTD.fx",
+        "ReviewPK.fx",
+        "ReviewSG.fx",
+        "SG.fx",
+        "TD.fx"
+      ]
+    },
+    "lifecycle": "Captured on App.OnStart via Param(\"cid\").",
+    "sample_value": "1054",
+    "validation": "Blank or numeric string.",
+    "permissions": "Derived from navigation context.",
+    "last_modified": "2025-10-06T08:49:09Z"
+  },
+  "varUpdateStatus": {
+    "scope": "global",
+    "type": "Record",
+    "description": "Case record looked up from Main when a CID is supplied.",
+    "defined_in": "App.OnStart",
+    "used_by": [
+      "Portal",
+      "Portal_Cases"
+    ],
+    "cross_references": {
+      "sets": [
+        "App.OnStart",
+        "Portal.Set",
+        "Portal_Cases.Set"
+      ],
+      "reads": [
+        "Portal.fx",
+        "Portal_Cases.fx"
+      ]
+    },
+    "lifecycle": "Set on App.OnStart when CID provided; cleared otherwise.",
+    "sample_value": "{ID:1054, CaseStatus:\"Manager Review\", ...}",
+    "validation": "Record from Main or Blank.",
+    "permissions": "Accessible to all screens relying on deep-link context.",
+    "last_modified": "2025-10-06T08:49:09Z"
+  },
+  "varCurrentCase": {
+    "scope": "global",
+    "type": "Record",
+    "description": "Currently focused case record reused across screens.",
+    "defined_in": "App.OnStart",
+    "used_by": [
+      "ED",
+      "FG",
+      "Portal",
+      "Portal_Cases",
+      "QaitFinal",
+      "QaitReview",
+      "RMPKNV",
+      "ReviewED",
+      "ReviewFGTD",
+      "ReviewPK",
+      "ReviewSG",
+      "SG",
+      "TD"
+    ],
+    "cross_references": {
+      "sets": [
+        "App.OnStart",
+        "FG.UpdateContext",
+        "Portal.Set",
+        "Portal_Cases.Set",
+        "RMPKNV.UpdateContext",
+        "SG.UpdateContext",
+        "TD.UpdateContext"
+      ],
+      "reads": [
+        "ED.fx",
+        "FG.fx",
+        "Portal.fx",
+        "Portal_Cases.fx",
+        "QaitFinal.fx",
+        "QaitReview.fx",
+        "RMPKNV.fx",
+        "ReviewED.fx",
+        "ReviewFGTD.fx",
+        "ReviewPK.fx",
+        "ReviewSG.fx",
+        "SG.fx",
+        "TD.fx"
+      ]
+    },
+    "lifecycle": "Initialised from varUpdateStatus; updated whenever the user selects a case.",
+    "sample_value": "{ID:1054, CaseType:\"FG\"}",
+    "validation": "Main record or Blank.",
+    "permissions": "Available to any screen after navigation.",
+    "last_modified": "2025-10-06T08:49:09Z"
+  },
+  "varCheckCase": {
+    "scope": "global",
+    "type": "Record",
+    "description": "Temporary holder when the user previews a different case without committing selection.",
+    "defined_in": "App.OnStart",
+    "used_by": [
+      "ED",
+      "FG",
+      "Portal",
+      "Portal_Cases",
+      "QaitFinal",
+      "QaitReview",
+      "RMPKNV",
+      "ReviewED",
+      "ReviewFGTD",
+      "ReviewPK",
+      "ReviewSG",
+      "SG",
+      "TD"
+    ],
+    "cross_references": {
+      "sets": [
+        "App.OnStart",
+        "Portal.Set",
+        "Portal_Cases.Set"
+      ],
+      "reads": [
+        "ED.fx",
+        "FG.fx",
+        "Portal.fx",
+        "Portal_Cases.fx",
+        "QaitFinal.fx",
+        "QaitReview.fx",
+        "RMPKNV.fx",
+        "ReviewED.fx",
+        "ReviewFGTD.fx",
+        "ReviewPK.fx",
+        "ReviewSG.fx",
+        "SG.fx",
+        "TD.fx"
+      ]
+    },
+    "lifecycle": "Reset on App.OnStart and Portal.OnVisible; set when user hovers or selects.",
+    "sample_value": "{ID:1090}",
+    "validation": "Optional record.",
+    "permissions": "Session scoped.",
+    "last_modified": "2025-10-06T08:49:09Z"
+  },
+  "varCaseReviewID": {
+    "scope": "global",
+    "type": "number",
+    "description": "Numeric ID of the case currently under review.",
+    "defined_in": "App.OnStart",
+    "used_by": [
+      "PkMReviewED",
+      "Portal",
+      "Portal_Cases",
+      "QaitFinal",
+      "QaitReview",
+      "ReviewED",
+      "ReviewFGTD",
+      "ReviewPK",
+      "ReviewSG"
+    ],
+    "cross_references": {
+      "sets": [
+        "App.OnStart",
+        "Portal.Set",
+        "Portal_Cases.Set"
+      ],
+      "reads": [
+        "PkMReviewED.fx",
+        "Portal.fx",
+        "Portal_Cases.fx",
+        "QaitFinal.fx",
+        "QaitReview.fx",
+        "ReviewED.fx",
+        "ReviewFGTD.fx",
+        "ReviewPK.fx",
+        "ReviewSG.fx"
+      ]
+    },
+    "lifecycle": "Seeded on App.OnStart from varCurrentCase; updated on selection changes.",
+    "sample_value": "1054",
+    "validation": "Positive integer when a case is selected.",
+    "permissions": "Session scoped.",
+    "last_modified": "2025-10-06T08:49:09Z"
+  },
+  "varCaseReview": {
+    "scope": "global",
+    "type": "string",
+    "description": "Human-readable case identifier (CaseID) for display and logging.",
+    "defined_in": "App.OnStart",
+    "used_by": [
+      "Portal"
+    ],
+    "cross_references": {
+      "sets": [
+        "App.OnStart",
+        "Portal.Set"
+      ],
+      "reads": [
+        "Portal.fx"
+      ]
+    },
+    "lifecycle": "Derived on App.OnStart from varCurrentCase.CaseID.",
+    "sample_value": "CASE-1054",
+    "validation": "String or Blank.",
+    "permissions": "Session scoped.",
+    "last_modified": "2025-10-06T08:49:09Z"
+  },
+  "varMainSubmitRecord": {
+    "scope": "global",
+    "type": "Record",
+    "description": "Last submitted Main record used to prefill review screens.",
+    "defined_in": "App.OnStart",
+    "used_by": [
+      "Portal"
+    ],
+    "cross_references": {
+      "sets": [
+        "App.OnStart",
+        "Portal.Set"
+      ],
+      "reads": [
+        "Portal.fx"
+      ]
+    },
+    "lifecycle": "Initialised on App.OnStart; updated on successful submissions.",
+    "sample_value": "{ID:1054, CaseStatus:\"Manager Review\"}",
+    "validation": "Record or Blank.",
+    "permissions": "Session scoped.",
+    "last_modified": "2025-10-06T08:49:09Z"
+  },
+  "varCaseID": {
+    "scope": "global",
+    "type": "number",
+    "description": "Internal numeric Case ID used across collections and navigation.",
+    "defined_in": "App.OnStart",
+    "used_by": [
+      "ED",
+      "FG",
+      "PkMReviewED",
+      "Portal",
+      "Portal_Cases",
+      "QaitFinal",
+      "RMPKNV",
+      "ReviewED",
+      "ReviewFGTD",
+      "ReviewPK",
+      "ReviewSG",
+      "SG",
+      "TD"
+    ],
+    "cross_references": {
+      "sets": [
+        "App.OnStart",
+        "ED.Set",
+        "FG.Set",
+        "PkMReviewED.Set",
+        "Portal.Set",
+        "Portal_Cases.Set",
+        "QaitFinal.Set",
+        "RMPKNV.Set",
+        "ReviewED.Set",
+        "ReviewFGTD.Set",
+        "ReviewPK.Set",
+        "ReviewSG.Set",
+        "SG.Set",
+        "TD.Set"
+      ],
+      "reads": [
+        "ED.fx",
+        "FG.fx",
+        "PkMReviewED.fx",
+        "Portal.fx",
+        "Portal_Cases.fx",
+        "QaitFinal.fx",
+        "RMPKNV.fx",
+        "ReviewED.fx",
+        "ReviewFGTD.fx",
+        "ReviewPK.fx",
+        "ReviewSG.fx",
+        "SG.fx",
+        "TD.fx"
+      ]
+    },
+    "lifecycle": "Set on App.OnStart and refreshed post-submission.",
+    "sample_value": "1054",
+    "validation": "Positive integer.",
+    "permissions": "Session scoped.",
+    "last_modified": "2025-10-06T08:49:09Z"
+  },
+  "varMainRecord": {
+    "scope": "global",
+    "type": "Record",
+    "description": "Authoritative Main list record for the active case.",
+    "defined_in": "App.OnStart",
+    "used_by": [
+      "Portal"
+    ],
+    "cross_references": {
+      "sets": [
+        "App.OnStart",
+        "Portal.Set"
+      ],
+      "reads": [
+        "Portal.fx"
+      ]
+    },
+    "lifecycle": "Set on App.OnStart and refreshed when the user reselects the case.",
+    "sample_value": "{ID:1054, CaseStatus:\"QA Review\"}",
+    "validation": "Record or Blank.",
+    "permissions": "Session scoped.",
+    "last_modified": "2025-10-06T08:49:09Z"
+  },
+  "varCaseStatus": {
+    "scope": "global",
+    "type": "string",
+    "description": "Current workflow status for the active case.",
+    "defined_in": "App.OnStart",
+    "used_by": [
+      "ED",
+      "Portal",
+      "Portal_Cases",
+      "QaitFinal",
+      "ReviewED"
+    ],
+    "cross_references": {
+      "sets": [
+        "App.OnStart",
+        "ED.Set",
+        "Portal.Set",
+        "Portal_Cases.Set"
+      ],
+      "reads": [
+        "ED.fx",
+        "Portal.fx",
+        "Portal_Cases.fx",
+        "QaitFinal.fx",
+        "ReviewED.fx"
+      ]
+    },
+    "lifecycle": "Seeded from varMainRecord.CaseStatus; updated by review screens after Patch.",
+    "sample_value": "QA Review",
+    "validation": "Matches expected status vocabulary.",
+    "permissions": "Session scoped.",
+    "last_modified": "2025-10-06T08:49:09Z"
+  },
+  "varCaseType": {
+    "scope": "global",
+    "type": "string",
+    "description": "Case type code (FG, SG, TD, PK, EDIT, DELETE).",
+    "defined_in": "App.OnStart",
+    "used_by": [
+      "ED",
+      "FG",
+      "PkMReviewED",
+      "Portal",
+      "Portal_Cases",
+      "QaitFinal",
+      "RMPKNV",
+      "ReviewED",
+      "ReviewFGTD",
+      "ReviewPK",
+      "ReviewSG",
+      "SG",
+      "TD"
+    ],
+    "cross_references": {
+      "sets": [
+        "App.OnStart",
+        "ED.Set",
+        "FG.Set",
+        "PkMReviewED.Set",
+        "Portal.Set",
+        "Portal_Cases.Set",
+        "QaitFinal.Set",
+        "RMPKNV.Set",
+        "ReviewED.Set",
+        "ReviewFGTD.Set",
+        "ReviewPK.Set",
+        "ReviewSG.Set",
+        "SG.Set",
+        "TD.Set"
+      ],
+      "reads": [
+        "ED.fx",
+        "FG.fx",
+        "PkMReviewED.fx",
+        "Portal.fx",
+        "Portal_Cases.fx",
+        "QaitFinal.fx",
+        "RMPKNV.fx",
+        "ReviewED.fx",
+        "ReviewFGTD.fx",
+        "ReviewPK.fx",
+        "ReviewSG.fx",
+        "SG.fx",
+        "TD.fx"
+      ]
+    },
+    "lifecycle": "Derived from varMainRecord.CaseType.",
+    "sample_value": "FG",
+    "validation": "One of allowed case type strings.",
+    "permissions": "Session scoped.",
+    "last_modified": "2025-10-06T08:49:09Z"
+  },
+  "varRequestorEmail": {
+    "scope": "global",
+    "type": "string",
+    "description": "Email address of the case requestor for permission checks.",
+    "defined_in": "App.OnStart",
+    "used_by": [
+      "Portal",
+      "Portal_Cases"
+    ],
+    "cross_references": {
+      "sets": [
+        "App.OnStart",
+        "Portal.Set",
+        "Portal_Cases.Set"
+      ],
+      "reads": [
+        "Portal.fx",
+        "Portal_Cases.fx"
+      ]
+    },
+    "lifecycle": "Set on start from varMainRecord.Requestor.Email.",
+    "sample_value": "requestor@example.com",
+    "validation": "Lower-case trimmed email.",
+    "permissions": "Session scoped.",
+    "last_modified": "2025-10-06T08:49:09Z"
+  },
+  "varUserInvolved": {
+    "scope": "global",
+    "type": "boolean",
+    "description": "Indicates whether the current user has an active task on the case based on status flags.",
+    "defined_in": "App.OnStart",
+    "used_by": [
+      "Portal_Cases"
+    ],
+    "cross_references": {
+      "sets": [
+        "App.OnStart",
+        "Portal_Cases.UpdateContext"
+      ],
+      "reads": [
+        "Portal_Cases.fx"
+      ]
+    },
+    "lifecycle": "Computed on App.OnStart by evaluating colUserPermissionsActive.",
+    "sample_value": "true",
+    "validation": "Boolean only.",
+    "permissions": "Session scoped.",
+    "last_modified": "2025-10-06T08:49:09Z"
+  },
+  "varAnyOnPrint": {
+    "scope": "global",
+    "type": "Record",
+    "description": "Record used for print preview context on MatsReq-Print screen.",
+    "defined_in": "MatsReq-Print.Set",
+    "used_by": [
+      "MatsReq-Print"
+    ],
+    "cross_references": {
+      "sets": [
+        "MatsReq-Print.Set"
+      ],
+      "reads": [
+        "MatsReq-Print.fx"
+      ]
+    },
+    "lifecycle": "Set when MatsReq-Print loads based on PRINT_REF_ID.",
+    "sample_value": "{ID:1054}",
+    "validation": "Record or Blank.",
+    "permissions": "Session scoped, read-only elsewhere.",
+    "last_modified": "2025-10-06T08:49:09Z"
+  },
+  "varAnyOnPrintID": {
+    "scope": "global",
+    "type": "number",
+    "description": "Case ID currently prepared for print review.",
+    "defined_in": "QaitReview.Set",
+    "used_by": [
+      "MatsReq-Print",
+      "QaitReview"
+    ],
+    "cross_references": {
+      "sets": [
+        "QaitReview.Set"
+      ],
+      "reads": [
+        "MatsReq-Print.fx",
+        "QaitReview.fx"
+      ]
+    },
+    "lifecycle": "Updated on MatsReq-Print and QaitReview when user selects print.",
+    "sample_value": "1054",
+    "validation": "Positive integer.",
+    "permissions": "Session scoped.",
+    "last_modified": "2025-10-06T08:49:09Z"
+  },
+  "varSubmittedCase": {
+    "scope": "context",
+    "type": "Record",
+    "description": "Last submit payload captured inside form screens to drive post-submit actions.",
+    "defined_in": "ED.UpdateContext",
+    "used_by": [
+      "ED",
+      "FG",
+      "RMPKNV",
+      "SG",
+      "TD"
+    ],
+    "cross_references": {
+      "sets": [
+        "ED.UpdateContext",
+        "FG.UpdateContext",
+        "RMPKNV.UpdateContext",
+        "SG.UpdateContext",
+        "TD.UpdateContext"
+      ],
+      "reads": [
+        "ED.fx",
+        "FG.fx",
+        "RMPKNV.fx",
+        "SG.fx",
+        "TD.fx"
+      ]
+    },
+    "lifecycle": "Set by UpdateContext in form OnSuccess handlers; cleared on navigation away.",
+    "sample_value": "{ID:1054}",
+    "validation": "Record referencing Main submission.",
+    "permissions": "Local to the screen where it is set.",
+    "last_modified": "2025-10-06T08:49:09Z"
+  },
+  "varTargetStatus": {
+    "scope": "context",
+    "type": "string",
+    "description": "Next workflow status computed before submitting a case.",
+    "defined_in": "ED.UpdateContext",
+    "used_by": [
+      "ED",
+      "FG",
+      "RMPKNV",
+      "SG",
+      "TD"
+    ],
+    "cross_references": {
+      "sets": [
+        "ED.UpdateContext",
+        "FG.UpdateContext",
+        "RMPKNV.UpdateContext",
+        "SG.UpdateContext",
+        "TD.UpdateContext"
+      ],
+      "reads": [
+        "ED.fx",
+        "FG.fx",
+        "RMPKNV.fx",
+        "SG.fx",
+        "TD.fx"
+      ]
+    },
+    "lifecycle": "Set via UpdateContext prior to SubmitForm; consumed immediately.",
+    "sample_value": "QA Review",
+    "validation": "Matches workflow vocabulary.",
+    "permissions": "Local to the screen where it is set.",
+    "last_modified": "2025-10-06T08:49:09Z"
+  },
+  "varAC": {
+    "scope": "global",
+    "type": "number",
+    "description": "Accounting review flag stored alongside case routing.",
+    "defined_in": "ED.Set",
+    "used_by": [
+      "ED",
+      "FG",
+      "PkMReviewED",
+      "QaitFinal",
+      "RMPKNV",
+      "ReviewED",
+      "ReviewFGTD",
+      "ReviewPK",
+      "ReviewSG",
+      "SG",
+      "TD"
+    ],
+    "cross_references": {
+      "sets": [
+        "ED.Set",
+        "FG.Set",
+        "PkMReviewED.Set",
+        "QaitFinal.Set",
+        "RMPKNV.Set",
+        "ReviewED.Set",
+        "ReviewFGTD.Set",
+        "ReviewPK.Set",
+        "ReviewSG.Set",
+        "SG.Set",
+        "TD.Set"
+      ],
+      "reads": [
+        "ED.fx",
+        "FG.fx",
+        "PkMReviewED.fx",
+        "QaitFinal.fx",
+        "RMPKNV.fx",
+        "ReviewED.fx",
+        "ReviewFGTD.fx",
+        "ReviewPK.fx",
+        "ReviewSG.fx",
+        "SG.fx",
+        "TD.fx"
+      ]
+    },
+    "lifecycle": "Set after submissions and refreshed when reviewers patch results.",
+    "sample_value": "1",
+    "validation": "0 or 1.",
+    "permissions": "Session scoped.",
+    "last_modified": "2025-10-06T08:49:09Z"
+  },
+  "varQA": {
+    "scope": "global",
+    "type": "number",
+    "description": "QA review status flag mirrored from Main list fields.",
+    "defined_in": "ED.Set",
+    "used_by": [
+      "ED",
+      "FG",
+      "PkMReviewED",
+      "QaitFinal",
+      "RMPKNV",
+      "ReviewED",
+      "ReviewFGTD",
+      "ReviewPK",
+      "ReviewSG",
+      "SG",
+      "TD"
+    ],
+    "cross_references": {
+      "sets": [
+        "ED.Set",
+        "FG.Set",
+        "PkMReviewED.Set",
+        "QaitFinal.Set",
+        "RMPKNV.Set",
+        "ReviewED.Set",
+        "ReviewFGTD.Set",
+        "ReviewPK.Set",
+        "ReviewSG.Set",
+        "SG.Set",
+        "TD.Set"
+      ],
+      "reads": [
+        "ED.fx",
+        "FG.fx",
+        "PkMReviewED.fx",
+        "QaitFinal.fx",
+        "RMPKNV.fx",
+        "ReviewED.fx",
+        "ReviewFGTD.fx",
+        "ReviewPK.fx",
+        "ReviewSG.fx",
+        "SG.fx",
+        "TD.fx"
+      ]
+    },
+    "lifecycle": "Maintained with other department flags during submissions.",
+    "sample_value": "1",
+    "validation": "0 or 1.",
+    "permissions": "Session scoped.",
+    "last_modified": "2025-10-06T08:49:09Z"
+  },
+  "varQAR1": {
+    "scope": "global",
+    "type": "number",
+    "description": "QA review stage 1 status flag.",
+    "defined_in": "ED.Set",
+    "used_by": [
+      "ED",
+      "FG",
+      "PkMReviewED",
+      "QaitFinal",
+      "RMPKNV",
+      "ReviewED",
+      "ReviewFGTD",
+      "ReviewPK",
+      "ReviewSG",
+      "SG",
+      "TD"
+    ],
+    "cross_references": {
+      "sets": [
+        "ED.Set",
+        "FG.Set",
+        "PkMReviewED.Set",
+        "QaitFinal.Set",
+        "RMPKNV.Set",
+        "ReviewED.Set",
+        "ReviewFGTD.Set",
+        "ReviewPK.Set",
+        "ReviewSG.Set",
+        "SG.Set",
+        "TD.Set"
+      ],
+      "reads": [
+        "ED.fx",
+        "FG.fx",
+        "PkMReviewED.fx",
+        "QaitFinal.fx",
+        "RMPKNV.fx",
+        "ReviewED.fx",
+        "ReviewFGTD.fx",
+        "ReviewPK.fx",
+        "ReviewSG.fx",
+        "SG.fx",
+        "TD.fx"
+      ]
+    },
+    "lifecycle": "Updated when QA stage 1 completes or resets.",
+    "sample_value": "0",
+    "validation": "0 or 1.",
+    "permissions": "Session scoped.",
+    "last_modified": "2025-10-06T08:49:09Z"
+  },
+  "varQAR2": {
+    "scope": "global",
+    "type": "number",
+    "description": "QA review stage 2 status flag.",
+    "defined_in": "ED.Set",
+    "used_by": [
+      "ED",
+      "FG",
+      "PkMReviewED",
+      "QaitFinal",
+      "RMPKNV",
+      "ReviewED",
+      "ReviewFGTD",
+      "ReviewPK",
+      "ReviewSG",
+      "SG",
+      "TD"
+    ],
+    "cross_references": {
+      "sets": [
+        "ED.Set",
+        "FG.Set",
+        "PkMReviewED.Set",
+        "QaitFinal.Set",
+        "RMPKNV.Set",
+        "ReviewED.Set",
+        "ReviewFGTD.Set",
+        "ReviewPK.Set",
+        "ReviewSG.Set",
+        "SG.Set",
+        "TD.Set"
+      ],
+      "reads": [
+        "ED.fx",
+        "FG.fx",
+        "PkMReviewED.fx",
+        "QaitFinal.fx",
+        "RMPKNV.fx",
+        "ReviewED.fx",
+        "ReviewFGTD.fx",
+        "ReviewPK.fx",
+        "ReviewSG.fx",
+        "SG.fx",
+        "TD.fx"
+      ]
+    },
+    "lifecycle": "Updated when QA stage 2 completes or resets.",
+    "sample_value": "0",
+    "validation": "0 or 1.",
+    "permissions": "Session scoped.",
+    "last_modified": "2025-10-06T08:49:09Z"
+  },
+  "varIT": {
+    "scope": "global",
+    "type": "number",
+    "description": "IT review status flag mirrored from Main.",
+    "defined_in": "ED.Set",
+    "used_by": [
+      "ED",
+      "FG",
+      "PkMReviewED",
+      "QaitFinal",
+      "RMPKNV",
+      "ReviewED",
+      "ReviewFGTD",
+      "ReviewPK",
+      "ReviewSG",
+      "SG",
+      "TD"
+    ],
+    "cross_references": {
+      "sets": [
+        "ED.Set",
+        "FG.Set",
+        "PkMReviewED.Set",
+        "QaitFinal.Set",
+        "RMPKNV.Set",
+        "ReviewED.Set",
+        "ReviewFGTD.Set",
+        "ReviewPK.Set",
+        "ReviewSG.Set",
+        "SG.Set",
+        "TD.Set"
+      ],
+      "reads": [
+        "ED.fx",
+        "FG.fx",
+        "PkMReviewED.fx",
+        "QaitFinal.fx",
+        "RMPKNV.fx",
+        "ReviewED.fx",
+        "ReviewFGTD.fx",
+        "ReviewPK.fx",
+        "ReviewSG.fx",
+        "SG.fx",
+        "TD.fx"
+      ]
+    },
+    "lifecycle": "Updated when IT completes or resets tasks.",
+    "sample_value": "0",
+    "validation": "0 or 1.",
+    "permissions": "Session scoped.",
+    "last_modified": "2025-10-06T08:49:09Z"
+  },
+  "varPD": {
+    "scope": "global",
+    "type": "number",
+    "description": "Product development review status flag.",
+    "defined_in": "ED.Set",
+    "used_by": [
+      "ED",
+      "FG",
+      "PkMReviewED",
+      "QaitFinal",
+      "RMPKNV",
+      "ReviewED",
+      "ReviewFGTD",
+      "ReviewPK",
+      "ReviewSG",
+      "SG",
+      "TD"
+    ],
+    "cross_references": {
+      "sets": [
+        "ED.Set",
+        "FG.Set",
+        "PkMReviewED.Set",
+        "QaitFinal.Set",
+        "RMPKNV.Set",
+        "ReviewED.Set",
+        "ReviewFGTD.Set",
+        "ReviewPK.Set",
+        "ReviewSG.Set",
+        "SG.Set",
+        "TD.Set"
+      ],
+      "reads": [
+        "ED.fx",
+        "FG.fx",
+        "PkMReviewED.fx",
+        "QaitFinal.fx",
+        "RMPKNV.fx",
+        "ReviewED.fx",
+        "ReviewFGTD.fx",
+        "ReviewPK.fx",
+        "ReviewSG.fx",
+        "SG.fx",
+        "TD.fx"
+      ]
+    },
+    "lifecycle": "Updated during submissions or send backs.",
+    "sample_value": "0",
+    "validation": "0 or 1.",
+    "permissions": "Session scoped.",
+    "last_modified": "2025-10-06T08:49:09Z"
+  },
+  "varPurchase": {
+    "scope": "global",
+    "type": "number",
+    "description": "Purchasing review status flag.",
+    "defined_in": "ED.Set",
+    "used_by": [
+      "ED",
+      "FG",
+      "PkMReviewED",
+      "QaitFinal",
+      "RMPKNV",
+      "ReviewED",
+      "ReviewFGTD",
+      "ReviewPK",
+      "ReviewSG",
+      "SG",
+      "TD"
+    ],
+    "cross_references": {
+      "sets": [
+        "ED.Set",
+        "FG.Set",
+        "PkMReviewED.Set",
+        "QaitFinal.Set",
+        "RMPKNV.Set",
+        "ReviewED.Set",
+        "ReviewFGTD.Set",
+        "ReviewPK.Set",
+        "ReviewSG.Set",
+        "SG.Set",
+        "TD.Set"
+      ],
+      "reads": [
+        "ED.fx",
+        "FG.fx",
+        "PkMReviewED.fx",
+        "QaitFinal.fx",
+        "RMPKNV.fx",
+        "ReviewED.fx",
+        "ReviewFGTD.fx",
+        "ReviewPK.fx",
+        "ReviewSG.fx",
+        "SG.fx",
+        "TD.fx"
+      ]
+    },
+    "lifecycle": "Maintained with other department statuses.",
+    "sample_value": "0",
+    "validation": "0 or 1.",
+    "permissions": "Session scoped.",
+    "last_modified": "2025-10-06T08:49:09Z"
+  },
+  "varWHFG": {
+    "scope": "global",
+    "type": "number",
+    "description": "Warehouse FG review status flag.",
+    "defined_in": "ED.Set",
+    "used_by": [
+      "ED",
+      "FG",
+      "PkMReviewED",
+      "QaitFinal",
+      "RMPKNV",
+      "ReviewED",
+      "ReviewFGTD",
+      "ReviewPK",
+      "ReviewSG",
+      "SG",
+      "TD"
+    ],
+    "cross_references": {
+      "sets": [
+        "ED.Set",
+        "FG.Set",
+        "PkMReviewED.Set",
+        "QaitFinal.Set",
+        "RMPKNV.Set",
+        "ReviewED.Set",
+        "ReviewFGTD.Set",
+        "ReviewPK.Set",
+        "ReviewSG.Set",
+        "SG.Set",
+        "TD.Set"
+      ],
+      "reads": [
+        "ED.fx",
+        "FG.fx",
+        "PkMReviewED.fx",
+        "QaitFinal.fx",
+        "RMPKNV.fx",
+        "ReviewED.fx",
+        "ReviewFGTD.fx",
+        "ReviewPK.fx",
+        "ReviewSG.fx",
+        "SG.fx",
+        "TD.fx"
+      ]
+    },
+    "lifecycle": "Updated during FG/TD approvals.",
+    "sample_value": "0",
+    "validation": "0 or 1.",
+    "permissions": "Session scoped.",
+    "last_modified": "2025-10-06T08:49:09Z"
+  },
+  "varWHRM": {
+    "scope": "global",
+    "type": "number",
+    "description": "Warehouse RM review status flag.",
+    "defined_in": "ED.Set",
+    "used_by": [
+      "ED",
+      "FG",
+      "PkMReviewED",
+      "QaitFinal",
+      "RMPKNV",
+      "ReviewED",
+      "ReviewFGTD",
+      "ReviewPK",
+      "ReviewSG",
+      "SG",
+      "TD"
+    ],
+    "cross_references": {
+      "sets": [
+        "ED.Set",
+        "FG.Set",
+        "PkMReviewED.Set",
+        "QaitFinal.Set",
+        "RMPKNV.Set",
+        "ReviewED.Set",
+        "ReviewFGTD.Set",
+        "ReviewPK.Set",
+        "ReviewSG.Set",
+        "SG.Set",
+        "TD.Set"
+      ],
+      "reads": [
+        "ED.fx",
+        "FG.fx",
+        "PkMReviewED.fx",
+        "QaitFinal.fx",
+        "RMPKNV.fx",
+        "ReviewED.fx",
+        "ReviewFGTD.fx",
+        "ReviewPK.fx",
+        "ReviewSG.fx",
+        "SG.fx",
+        "TD.fx"
+      ]
+    },
+    "lifecycle": "Updated during PK/NV approvals.",
+    "sample_value": "0",
+    "validation": "0 or 1.",
+    "permissions": "Session scoped.",
+    "last_modified": "2025-10-06T08:49:09Z"
+  },
+  "varURL": {
+    "scope": "global",
+    "type": "string",
+    "description": "Deep link URL generated for emails and flow integrations.",
+    "defined_in": "ED.Set",
+    "used_by": [
+      "ED",
+      "FG",
+      "PkMReviewED",
+      "QaitFinal",
+      "RMPKNV",
+      "ReviewED",
+      "ReviewFGTD",
+      "ReviewPK",
+      "ReviewSG",
+      "SG",
+      "TD"
+    ],
+    "cross_references": {
+      "sets": [
+        "ED.Set",
+        "FG.Set",
+        "PkMReviewED.Set",
+        "QaitFinal.Set",
+        "RMPKNV.Set",
+        "ReviewED.Set",
+        "ReviewFGTD.Set",
+        "ReviewPK.Set",
+        "ReviewSG.Set",
+        "SG.Set",
+        "TD.Set"
+      ],
+      "reads": [
+        "ED.fx",
+        "FG.fx",
+        "PkMReviewED.fx",
+        "QaitFinal.fx",
+        "RMPKNV.fx",
+        "ReviewED.fx",
+        "ReviewFGTD.fx",
+        "ReviewPK.fx",
+        "ReviewSG.fx",
+        "SG.fx",
+        "TD.fx"
+      ]
+    },
+    "lifecycle": "Built during submissions with the latest Case ID.",
+    "sample_value": "https://apps.powerapps.com/...&cid=1054",
+    "validation": "Valid app URL.",
+    "permissions": "Session scoped, used by flows.",
+    "last_modified": "2025-10-06T08:49:09Z"
+  },
+  "varCurrentCaseJa": {
+    "scope": "global",
+    "type": "Record",
+    "description": "Auxiliary case record refreshed inside review screens for quick access.",
+    "defined_in": "PkMReviewED.Set",
+    "used_by": [
+      "PkMReviewED",
+      "QaitFinal",
+      "RMPKNV",
+      "ReviewED",
+      "ReviewFGTD",
+      "ReviewPK",
+      "ReviewSG"
+    ],
+    "cross_references": {
+      "sets": [
+        "PkMReviewED.Set",
+        "QaitFinal.Set",
+        "RMPKNV.Set",
+        "ReviewED.Set",
+        "ReviewFGTD.Set",
+        "ReviewPK.Set",
+        "ReviewSG.Set"
+      ],
+      "reads": [
+        "PkMReviewED.fx",
+        "QaitFinal.fx",
+        "RMPKNV.fx",
+        "ReviewED.fx",
+        "ReviewFGTD.fx",
+        "ReviewPK.fx",
+        "ReviewSG.fx"
+      ]
+    },
+    "lifecycle": "Set within review screens before deriving status flags.",
+    "sample_value": "{ID:1054}",
+    "validation": "Record or Blank.",
+    "permissions": "Session scoped.",
+    "last_modified": "2025-10-06T08:49:09Z"
+  },
+  "CheckOwnCase": {
+    "scope": "global",
+    "type": "number",
+    "description": "Flag representing current case filter (0=Assigned,1=My,2=All).",
+    "defined_in": "Portal.Set",
+    "used_by": [],
+    "cross_references": {
+      "sets": [
+        "Portal.Set",
+        "Portal_Cases.Set"
+      ],
+      "reads": []
+    },
+    "lifecycle": "Defaulted to 0 in navigation flows; switched via Portal_Cases tabs.",
+    "sample_value": "1",
+    "validation": "0, 1 or 2.",
+    "permissions": "Session scoped.",
+    "last_modified": "2025-10-06T08:49:09Z"
+  },
+  "CleanMatsGroup": {
+    "scope": "collection",
+    "type": "table",
+    "description": "Cached list of MatGroup choice records used in dropdowns.",
+    "defined_in": "App.OnStart",
+    "used_by": [],
+    "cross_references": {
+      "sets": [
+        "App.OnStart"
+      ],
+      "reads": []
+    },
+    "lifecycle": "Refresh on App.OnStart via ClearCollect from Choice datasource.",
+    "sample_value": "[{MatGroup:\"FG\"}]",
+    "validation": "Non-empty when Choice datasource available.",
+    "permissions": "Read-only collection.",
+    "last_modified": "2025-10-06T08:49:09Z"
+  },
+  "AdtnItems": {
+    "scope": "collection",
+    "type": "table",
+    "description": "Local collection of additional line items attached to a case.",
+    "defined_in": "App.Clear",
+    "used_by": [
+      "ED",
+      "FG",
+      "Portal",
+      "Portal_Cases",
+      "QaitReview",
+      "RMPKNV",
+      "ReviewED",
+      "ReviewFGTD",
+      "ReviewPK",
+      "ReviewSG",
+      "SG",
+      "TD"
+    ],
+    "cross_references": {
+      "sets": [
+        "App.Clear",
+        "App.Collect",
+        "ED.Clear",
+        "FG.Clear",
+        "FG.Collect",
+        "Portal.Clear",
+        "Portal_Cases.Clear",
+        "Portal_Cases.Collect",
+        "QaitReview.Clear",
+        "RMPKNV.Clear",
+        "RMPKNV.Collect",
+        "ReviewED.Clear",
+        "ReviewFGTD.Clear",
+        "ReviewPK.Clear",
+        "ReviewPK.Collect",
+        "ReviewSG.Clear",
+        "SG.Clear",
+        "SG.Collect",
+        "TD.Clear",
+        "TD.Collect"
+      ],
+      "reads": [
+        "ED.fx",
+        "FG.fx",
+        "Portal.fx",
+        "Portal_Cases.fx",
+        "QaitReview.fx",
+        "RMPKNV.fx",
+        "ReviewED.fx",
+        "ReviewFGTD.fx",
+        "ReviewPK.fx",
+        "ReviewSG.fx",
+        "SG.fx",
+        "TD.fx"
+      ]
+    },
+    "lifecycle": "Cleared and rebuilt on App.OnStart and before submits; mutated during line item edits.",
+    "sample_value": "[{ItemNo:\"0010\", BaseQuantity:\"5\"}]",
+    "validation": "ItemNo must be populated before submission.",
+    "permissions": "Session scoped.",
+    "last_modified": "2025-10-06T08:49:09Z"
+  },
+  "EDAdtnItems": {
+    "scope": "collection",
+    "type": "table",
+    "description": "Change log entries for Edit/Delete requests.",
+    "defined_in": "App.Clear",
+    "used_by": [
+      "ED",
+      "Portal",
+      "Portal_Cases"
+    ],
+    "cross_references": {
+      "sets": [
+        "App.Clear",
+        "App.Collect",
+        "ED.Collect",
+        "Portal.Clear",
+        "Portal_Cases.Clear",
+        "Portal_Cases.Collect"
+      ],
+      "reads": [
+        "ED.fx",
+        "Portal.fx",
+        "Portal_Cases.fx"
+      ]
+    },
+    "lifecycle": "Rehydrated on App.OnStart from EDData and updated during ED form usage.",
+    "sample_value": "[{FieldName:\"UOM\", NewValue:\"EA\"}]",
+    "validation": "Records require FieldName and NewValue.",
+    "permissions": "Session scoped.",
+    "last_modified": "2025-10-06T08:49:09Z"
+  },
+  "colUserPermissions": {
+    "scope": "collection",
+    "type": "table",
+    "description": "Permission matrix derived from UserManagement for the active case.",
+    "defined_in": "App.ClearCollect",
+    "used_by": [
+      "Portal_Cases"
+    ],
+    "cross_references": {
+      "sets": [
+        "App.ClearCollect",
+        "App.OnStart",
+        "Portal_Cases.ClearCollect",
+        "Portal_Cases.Collect"
+      ],
+      "reads": [
+        "Portal_Cases.fx"
+      ]
+    },
+    "lifecycle": "Built on App.OnStart and refreshed when cases change.",
+    "sample_value": "[{Permission:\"QA\", HasPermission:true, Status:1}]",
+    "validation": "Boolean HasPermission column required.",
+    "permissions": "Session scoped.",
+    "last_modified": "2025-10-06T08:49:09Z"
+  },
+  "colUserPermissionsActive": {
+    "scope": "collection",
+    "type": "table",
+    "description": "Filtered subset of colUserPermissions where the user currently has tasks.",
+    "defined_in": "App.ClearCollect",
+    "used_by": [
+      "Portal_Cases"
+    ],
+    "cross_references": {
+      "sets": [
+        "App.ClearCollect",
+        "App.OnStart",
+        "Portal_Cases.ClearCollect",
+        "Portal_Cases.Collect"
+      ],
+      "reads": [
+        "Portal_Cases.fx"
+      ]
+    },
+    "lifecycle": "Created on App.OnStart after colUserPermissions is populated.",
+    "sample_value": "[{Permission:\"QA\", Status:1}]",
+    "validation": "Derived collection; remains in sync with colUserPermissions.",
+    "permissions": "Session scoped.",
+    "last_modified": "2025-10-06T08:49:09Z"
+  }
+}
